@@ -746,3 +746,567 @@
   }
 
 }
+/* =========================
+   STUDENT / INSTRUCTOR BUTTONS
+========================= */
+
+.role-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.role-btn {
+  flex: 1;
+  padding: 13px;
+  background: white;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Grey when hovered */
+
+.role-btn:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+/* Dark when selected */
+
+.role-btn.selected {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+/* =========================
+   LOGGED-IN MENU BUTTON
+========================= */
+
+.menu-button {
+  background: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #111827;
+  padding: 5px 10px;
+  line-height: 1;
+}
+
+.menu-button:hover {
+  color: #6b7280;
+}
+
+
+/* =========================
+   MENU OVERLAY
+========================= */
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 200;
+}
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  max-width: 85%;
+  height: 100vh;
+
+  background: white;
+
+  z-index: 300;
+
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================
+   SIDE MENU HEADER
+========================= */
+
+.side-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 25px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.side-menu-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #111827;
+}
+
+.side-menu-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close-menu {
+  background: none;
+  border: none;
+
+  font-size: 32px;
+
+  color: #6b7280;
+
+  cursor: pointer;
+
+  line-height: 1;
+}
+
+.close-menu:hover {
+  color: #111827;
+}
+
+
+/* =========================
+   SIDE MENU LINKS
+========================= */
+
+.side-menu-links {
+  display: flex;
+  flex-direction: column;
+
+  padding: 15px;
+}
+
+
+/* Links and buttons */
+
+.side-menu-links a,
+.menu-option {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  width: 100%;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: white;
+
+  color: #374151;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition: 0.2s;
+}
+
+
+/* Hover */
+
+.side-menu-links a:hover,
+.menu-option:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+
+/* Icons */
+
+.side-menu-links span {
+  width: 25px;
+  font-size: 19px;
+}
+
+
+/* =========================
+   BOTTOM / SIGN OUT
+========================= */
+
+.side-menu-bottom {
+  margin-top: auto;
+
+  padding: 15px;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.sign-out-btn {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 15px;
+
+  background: white;
+
+  border: none;
+
+  border-radius: 7px;
+
+  color: #374151;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.sign-out-btn:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+
+/* =========================
+   MOBILE SIDE MENU
+========================= */
+
+@media (max-width: 650px) {
+
+  .side-menu {
+    width: 300px;
+  }
+
+}
+/* =========================
+   REGISTRATION POPUP
+========================= */
+
+.register-popup-overlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+
+/* =========================
+   POPUP BOX
+========================= */
+
+.register-popup {
+  width: 420px;
+  max-width: 90%;
+
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 30px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  text-align: center;
+}
+
+
+/* =========================
+   POPUP TITLE
+========================= */
+
+.register-popup h2 {
+  margin-top: 0;
+
+  margin-bottom: 12px;
+
+  color: #111827;
+
+  font-size: 24px;
+}
+
+
+/* =========================
+   POPUP TEXT
+========================= */
+
+.register-popup p {
+  margin-bottom: 25px;
+
+  color: #6b7280;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   POPUP BUTTON AREA
+========================= */
+
+.register-popup-actions {
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+
+/* =========================
+   OK BUTTON
+========================= */
+
+.popup-ok-btn {
+  border: none;
+
+  background: #111827;
+
+  color: white;
+
+  padding: 11px 28px;
+
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.popup-ok-btn:hover {
+  background: #6b7280;
+}
+/* =========================
+   MY COURSES PAGE
+========================= */
+
+.my-courses-page {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 80px 40px;
+}
+
+
+/* =========================
+   MY COURSES HEADER
+========================= */
+
+.my-courses-header {
+  margin-bottom: 60px;
+}
+
+.my-courses-header span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.my-courses-header h1 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 48px;
+
+  font-weight: 800;
+}
+
+.my-courses-header p {
+  margin-top: 12px;
+
+  color: #6b7280;
+
+  font-size: 18px;
+}
+
+
+/* =========================
+   EMPTY COURSES STATE
+========================= */
+
+.my-courses-empty {
+  max-width: 650px;
+
+  margin: 20px auto 0;
+
+  padding: 55px 40px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   EMPTY CIRCLE
+========================= */
+
+.empty-circle {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #111827;
+
+  font-size: 36px;
+
+  font-weight: 300;
+}
+
+
+/* =========================
+   EMPTY TITLE
+========================= */
+
+.my-courses-empty h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 28px;
+
+  font-weight: 750;
+}
+
+
+/* =========================
+   EMPTY TEXT
+========================= */
+
+.my-courses-empty p {
+  margin: 12px 0 6px;
+
+  color: #4b5563;
+
+  font-size: 17px;
+}
+
+.empty-description {
+  display: block;
+
+  margin-bottom: 30px;
+
+  color: #9ca3af;
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   EXPLORE BUTTON
+========================= */
+
+.my-courses-empty .primary-btn {
+  display: inline-block;
+
+  padding: 14px 28px;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  border-radius: 8px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  .my-courses-page {
+    padding: 50px 20px;
+  }
+
+  .my-courses-header h1 {
+    font-size: 36px;
+  }
+
+  .my-courses-empty {
+    padding: 40px 25px;
+  }
+
+}
+.Student-Dasboard {
+  position: sticky;
+  top: 10px; 
+  background-color: white; 
+  z-index: 100; 
+}

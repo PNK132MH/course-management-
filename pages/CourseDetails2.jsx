@@ -184,7 +184,7 @@ function CourseDetails() {
               className="primary-btn full-btn"
               onClick={enrollCourse}
             >
-              Enroll Now
+              START LEARNING
             </button>
 
 
