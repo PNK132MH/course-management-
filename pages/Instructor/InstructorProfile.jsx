@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./InstructorProfile.css";
+import instructorImage from "../../src/assets/image.png";
 
 function InstructorProfile() {
 
@@ -12,7 +13,7 @@ function InstructorProfile() {
     "React, JavaScript, HTML & CSS"
   );
 
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState(instructorImage);
 
   const handlePhotoChange = (event) => {
 
