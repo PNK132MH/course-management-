@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import CourseCard from "../components/Coursecard";
+import CourseCard from "../components/CourseCard";
 import courses from "../data/courseData";
+import "./Home.css";
 
 function Home() {
 

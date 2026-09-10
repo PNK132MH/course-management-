@@ -1,0 +1,141 @@
+.student-progress-page {
+  min-height: 100vh;
+
+  background: #f3f0e8;
+
+  padding: 40px;
+}
+
+.student-progress-container {
+  max-width: 1000px;
+
+  margin: auto;
+}
+
+.student-progress-container h1 {
+  color: #222;
+}
+
+.student-progress-container > p {
+  color: #777;
+}
+
+
+/* AVERAGE */
+
+.average-progress {
+  margin-top: 25px;
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.average-progress h2 {
+  color: #222;
+}
+
+.average-progress strong {
+  font-size: 28px;
+
+  color: #222;
+}
+
+
+/* STUDENTS */
+
+.student-progress-list {
+  margin-top: 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.student-progress-card {
+  background: white;
+
+  padding: 22px;
+
+  border-radius: 12px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 30px;
+
+  align-items: center;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.student-info h2 {
+  margin: 0;
+
+  color: #222;
+}
+
+.student-info p {
+  color: #555;
+}
+
+.student-info small {
+  color: #888;
+}
+
+.student-progress-right strong {
+  display: block;
+
+  text-align: right;
+
+  margin-bottom: 8px;
+
+  color: #222;
+}
+
+
+/* BAR */
+
+.student-progress-bar {
+  width: 100%;
+
+  height: 12px;
+
+  background: #e5e5e5;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.student-progress-fill {
+  height: 100%;
+
+  background: #f0c84b;
+
+  border-radius: 20px;
+}
+
+
+@media (max-width: 650px) {
+
+  .student-progress-page {
+    padding: 15px;
+  }
+
+  .student-progress-card {
+    grid-template-columns: 1fr;
+  }
+
+  .student-progress-right strong {
+    text-align: left;
+  }
+
+}

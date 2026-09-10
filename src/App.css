@@ -1304,9 +1304,27 @@
   }
 
 }
-.Student-Dasboard {
-  position: sticky;
-  top: 10px; 
-  background-color: white; 
-  z-index: 100; 
+.Student-Dasboard1 {
+  margin-top: -38px;
+  margin-bottom: 30px;
 }
+.Student-Dasboard {
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 45px;
+  margin: 10px 0;
+}
+.courses-header2 {
+  margin-bottom: 40px;
+}
+
+.courses-header2 h1 {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.courses-header2 p {
+  color: #6b7280;
+  font-size: 17px;
+}
+

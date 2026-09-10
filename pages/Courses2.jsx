@@ -1,9 +1,13 @@
+
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import CourseCard2 from "../components/CourseCard2";
+
+import CourseCard from "../components/CourseCard";
 import courses from "../data/courseData";
 
-function Courses2() {
+import "./Courses2.css";
+
+function Courses() {
 
   const [searchParams] = useSearchParams();
 
@@ -20,6 +24,9 @@ function Courses2() {
     "Mobile Development",
     "Development Tools"
   ];
+
+
+  /* FILTER COURSES */
 
   const filteredCourses = useMemo(() => {
 
@@ -42,17 +49,26 @@ function Courses2() {
 
 
   return (
+
     <main className="page">
+
+      {/* HEADER */}
 
       <div className="courses-header">
 
-        <h1>
-          Available Courses
-        </h1>
+        <div>
 
-        <p>
-          START LEARNING
-        </p>
+          <span>OUR COURSES</span>
+
+          <h1>
+            Explore our courses
+          </h1>
+
+          <p>
+            Find the right course and start learning today.
+          </p>
+
+        </div>
 
       </div>
 
@@ -65,7 +81,9 @@ function Courses2() {
           type="text"
           placeholder="Search for a course..."
           value={search}
-          onChange={(event) => setSearch(event.target.value)}
+          onChange={(event) =>
+            setSearch(event.target.value)
+          }
         />
 
         <span>🔎</span>
@@ -98,30 +116,41 @@ function Courses2() {
 
       {/* COURSES */}
 
-      <div className="course-grid">
+      {filteredCourses.length > 0 ? (
 
-        {filteredCourses.length > 0 ? (
+        <div className="course-grid">
 
-          filteredCourses.map((course) => (
-            <CourseCard2
+          {filteredCourses.map((course) => (
+
+            <CourseCard
               key={course.id}
               course={course}
             />
-          ))
 
-        ) : (
+          ))}
 
-          <div className="no-results">
-            <h2>No courses found 😭</h2>
-            <p>Try another search.</p>
-          </div>
+        </div>
 
-        )}
+      ) : (
 
-      </div>
+        <div className="no-results">
+
+          <h2>
+            No courses found
+          </h2>
+
+          <p>
+            Try another search.
+          </p>
+
+        </div>
+
+      )}
 
     </main>
+
   );
 }
 
-export default Courses2;
+export default Courses;
+

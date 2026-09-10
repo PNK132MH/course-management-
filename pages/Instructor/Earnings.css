@@ -1,0 +1,126 @@
+.earnings-page {
+  min-height: 100vh;
+
+  background: #f3f0e8;
+
+  padding: 40px;
+}
+
+.earnings-container {
+  max-width: 1100px;
+
+  margin: auto;
+}
+
+.earnings-container h1 {
+  color: #222;
+}
+
+.earnings-container > p {
+  color: #777;
+}
+
+
+/* SUMMARY */
+
+.earnings-summary {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-top: 25px;
+}
+
+.earning-card {
+  background: white;
+
+  padding: 25px;
+
+  text-align: center;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.earning-card span {
+  font-size: 30px;
+}
+
+.earning-card h2 {
+  color: #222;
+
+  font-size: 28px;
+
+  margin: 10px 0 5px;
+}
+
+.earning-card p {
+  color: #777;
+}
+
+
+/* COURSES */
+
+.earnings-courses {
+  margin-top: 30px;
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.earnings-courses h2 {
+  color: #222;
+}
+
+.earning-course {
+  padding: 18px 0;
+
+  border-bottom: 1px solid #eee;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.earning-course:last-child {
+  border-bottom: none;
+}
+
+.earning-course h3 {
+  margin: 0;
+
+  color: #222;
+}
+
+.earning-course p {
+  color: #777;
+}
+
+.earning-course strong {
+  font-size: 20px;
+
+  color: #222;
+}
+
+
+@media (max-width: 700px) {
+
+  .earnings-page {
+    padding: 15px;
+  }
+
+  .earnings-summary {
+    grid-template-columns: 1fr;
+  }
+
+}

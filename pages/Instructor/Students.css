@@ -1,0 +1,62 @@
+.students-page {
+  min-height: 100vh;
+
+  background: #f3f0e8;
+
+  padding: 40px;
+}
+
+.students-container {
+  max-width: 1100px;
+
+  margin: auto;
+}
+
+.students-container h1 {
+  color: #222;
+}
+
+.students-container > p {
+  color: #777;
+}
+
+.students-table-container {
+  margin-top: 25px;
+
+  background: white;
+
+  border-radius: 12px;
+
+  overflow-x: auto;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 16px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #222;
+
+  color: #f0c84b;
+}
+
+td {
+  color: #555;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}

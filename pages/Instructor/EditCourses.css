@@ -1,0 +1,160 @@
+.edit-courses-page {
+  min-height: 100vh;
+
+  background: #f3f0e8;
+
+  padding: 40px;
+}
+
+.edit-courses-container {
+  max-width: 1000px;
+
+  margin: auto;
+}
+
+.edit-courses-container h1 {
+  color: #222;
+}
+
+.edit-courses-container > p {
+  color: #777;
+}
+
+.edit-course-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+.edit-course-card {
+  background: white;
+
+  padding: 22px;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.edit-course-card h2 {
+  margin: 0;
+
+  color: #222;
+}
+
+.edit-course-card p {
+  color: #777;
+}
+
+.edit-course-card button {
+  background: #222;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+}
+
+.edit-course-card button:hover {
+  background: #777;
+}
+
+.edit-form {
+  margin-top: 30px;
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.edit-form h2 {
+  color: #222;
+}
+
+.edit-form label {
+  display: block;
+
+  margin-top: 15px;
+
+  margin-bottom: 7px;
+
+  font-weight: bold;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 7px;
+}
+
+.edit-form textarea {
+  min-height: 100px;
+}
+
+.edit-buttons {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.edit-buttons button {
+  padding: 11px 18px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #f0c84b;
+
+  cursor: pointer;
+}
+
+.edit-buttons button:last-child {
+  background: #777;
+
+  color: white;
+}
+
+@media (max-width: 600px) {
+
+  .edit-courses-page {
+    padding: 15px;
+  }
+
+  .edit-course-card {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+}

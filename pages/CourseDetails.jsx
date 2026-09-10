@@ -1,29 +1,38 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 import courses from "../data/courseData";
+
+import "./CourseDetails.css";
+
 
 function CourseDetails() {
 
   const { id } = useParams();
-
   const navigate = useNavigate();
 
-  // Controls whether the registration popup is visible
+
+  // Registration popup
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
 
 
+  // Free/Paid trial popup
+  const [showTrialPopup, setShowTrialPopup] = useState(false);
+
+
+  // Find the course
   const course = courses.find(
     (course) => course.id === Number(id)
   );
 
 
+  // If course doesn't exist
   if (!course) {
+
     return (
       <main className="page">
 
-        <h1>
-          Course not found
-        </h1>
+        <h1>Course not found</h1>
 
         <button
           className="primary-btn"
@@ -37,18 +46,17 @@ function CourseDetails() {
   }
 
 
-  // =========================
-  // ENROLL COURSE
-  // =========================
+  // =================================
+  // ENROLL NOW
+  // =================================
 
   const enrollCourse = () => {
 
-    // Check if a user has registered/logged in
     const currentUser =
       localStorage.getItem("currentUser");
 
 
-    // If there is no user, show the popup
+    // User is not registered/logged in
     if (!currentUser) {
 
       setShowRegisterPopup(true);
@@ -57,22 +65,38 @@ function CourseDetails() {
     }
 
 
-    // If the user is registered,
-    // continue with the normal enrollment
-
-    const existingCourses =
-      JSON.parse(
-        localStorage.getItem("enrolledCourses") || "[]"
-      );
+    // User is registered
+    // Show Free/Paid Trial popup
+    setShowTrialPopup(true);
+  };
 
 
-    const alreadyEnrolled =
-      existingCourses.some(
-        (courseId) => courseId === course.id
-      );
+  // =================================
+  // GO TO REGISTER
+  // =================================
+
+  const goToRegister = () => {
+
+    setShowRegisterPopup(false);
+
+    navigate("/register");
+  };
 
 
-    if (!alreadyEnrolled) {
+  // =================================
+  // START FREE TRIAL
+  // =================================
+
+  const goToFree = () => {
+
+    // Get courses already saved in My Courses
+    const existingCourses = JSON.parse(
+      localStorage.getItem("enrolledCourses") || "[]"
+    );
+
+
+    // Add this course if it isn't already there
+    if (!existingCourses.includes(course.id)) {
 
       existingCourses.push(course.id);
 
@@ -80,29 +104,73 @@ function CourseDetails() {
         "enrolledCourses",
         JSON.stringify(existingCourses)
       );
-
     }
 
 
-    navigate("/my-courses");
+    // Close popup
+    setShowTrialPopup(false);
+
+
+    // Tell the user
+    alert("Your free trial has started!");
+
+
+    // =================================
+    // OPEN THE CORRECT COURSE
+    // =================================
+
+    if (course.title === "React for Beginners") {
+
+      navigate("/courses/react");
+
+    } else if (course.title === "JavaScript Mastery") {
+
+      navigate("/courses/javascript");
+
+    } else if (
+      course.title === "HTML & CSS Complete Course"
+    ) {
+
+      navigate("/courses/html-css");
+
+    } else if (
+      course.title === "Node.js Backend Development"
+    ) {
+
+      navigate("/courses/node");
+
+    } else if (
+      course.title === "React Native App Development"
+    ) {
+
+      navigate("/courses/react-native");
+
+    } else if (
+      course.title === "Git & GitHub for Developers"
+    ) {
+
+      navigate("/courses/github");
+
+    }
 
   };
 
 
-  // =========================
-  // GO TO REGISTER
-  // =========================
+  // =================================
+  // PAID TRIAL
+  // =================================
 
-  const goToRegister = () => {
+  const goToPaid = () => {
 
-    setShowRegisterPopup(false);
+    setShowTrialPopup(false);
 
-    navigate("/register");
+    alert("Paid trial selected!");
 
   };
 
 
   return (
+
     <main className="details-page">
 
       <div className="details-main">
@@ -147,10 +215,13 @@ function CourseDetails() {
 
 
           <p>
+
             Created by{" "}
+
             <strong>
               {course.instructor}
             </strong>
+
           </p>
 
         </div>
@@ -224,15 +295,25 @@ function CourseDetails() {
       </div>
 
 
-      {/* =========================
+      {/* =================================
           REGISTRATION POPUP
-      ========================= */}
+      ================================= */}
 
       {showRegisterPopup && (
 
         <div className="register-popup-overlay">
 
           <div className="register-popup">
+
+            <button
+              className="popup-close"
+              onClick={() =>
+                setShowRegisterPopup(false)
+              }
+            >
+              ×
+            </button>
+
 
             <h2>
               Registration Required
@@ -262,8 +343,130 @@ function CourseDetails() {
 
       )}
 
+
+      {/* =================================
+          FREE / PAID TRIAL POPUP
+      ================================= */}
+
+      {showTrialPopup && (
+
+        <div className="trial-popup-overlay">
+
+          <div className="trial-popup">
+
+            <button
+              className="popup-close"
+              onClick={() =>
+                setShowTrialPopup(false)
+              }
+            >
+              ×
+            </button>
+
+
+            <h2>
+              Choose Your Trial
+            </h2>
+
+
+            <p className="trial-subtitle">
+              Choose how you want to start learning.
+            </p>
+
+
+            <div className="trial-options">
+
+
+              {/* =========================
+                  FREE TRIAL
+              ========================= */}
+
+              <div className="trial-card">
+
+                <h3>
+                  🆓 Free Trial
+                </h3>
+
+
+                <ul>
+
+                  <li>
+                    ✓ Professional Teachings
+                  </li>
+
+                  <li>
+                    ✓ High-Quality Tutorials
+                  </li>
+
+                  <li>
+                    ✓ Effective Exercises
+                  </li>
+
+                </ul>
+
+
+                <button
+                  className="free-trial-btn"
+                  onClick={goToFree}
+                >
+                  Start Free Trial
+                </button>
+
+              </div>
+
+
+              {/* =========================
+                  PAID TRIAL
+              ========================= */}
+
+              <div className="trial-card paid-trial-card">
+
+                <h3>
+                  💳 Paid Trial
+                </h3>
+
+
+                <ul>
+
+                  <li>
+                    ✓ Professional Teachings
+                  </li>
+
+                  <li>
+                    ✓ High-Quality Tutorials
+                  </li>
+
+                  <li>
+                    ✓ Effective Exercises
+                  </li>
+
+                  <li>
+                    ✓ Download Available
+                  </li>
+
+                </ul>
+
+
+                <button
+                  className="paid-trial-btn"
+                  onClick={goToPaid}
+                >
+                  Choose Paid Trial
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
     </main>
   );
 }
+
 
 export default CourseDetails;

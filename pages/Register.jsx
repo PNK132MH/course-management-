@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./Auth.css";
 
 function Register({ onAccountCreated }) {
 
@@ -9,38 +10,27 @@ function Register({ onAccountCreated }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Stores whether the user chose Student or Instructor
+  // Student or Instructor
   const [role, setRole] = useState("");
-
 
   const handleRegister = (event) => {
 
     event.preventDefault();
 
-
     // Check if all fields are filled
-
     if (!name || !email || !password) {
-
       alert("Please fill in all fields.");
-
       return;
     }
 
-
-    // Check if Student or Instructor was selected
-
+    // Check if a role was selected
     if (!role) {
-
       alert("Please select Student or Instructor.");
-
       return;
     }
 
-
-    // Temporary frontend account storage
-    // Your friend's backend will replace this later
-
+    // Temporary frontend storage
+    // The backend will handle this later
     localStorage.setItem(
       "currentUser",
       JSON.stringify({
@@ -50,17 +40,12 @@ function Register({ onAccountCreated }) {
       })
     );
 
-
-    // Tell App.jsx that the account was created
-
+    // Tell App.jsx that an account was created
     onAccountCreated();
-
 
     alert("Account created!");
 
-
-    // Go to the correct dashboard
-
+    // Send the user to the correct dashboard
     if (role === "student") {
 
       navigate("/student-dashboard");
@@ -72,7 +57,6 @@ function Register({ onAccountCreated }) {
     }
 
   };
-
 
   return (
 
@@ -88,9 +72,7 @@ function Register({ onAccountCreated }) {
           Start your learning journey today.
         </p>
 
-
         <form onSubmit={handleRegister}>
-
 
           <label>
             Name
@@ -100,11 +82,8 @@ function Register({ onAccountCreated }) {
             type="text"
             placeholder="Your name"
             value={name}
-            onChange={(event) =>
-              setName(event.target.value)
-            }
+            onChange={(event) => setName(event.target.value)}
           />
-
 
           <label>
             Email
@@ -114,11 +93,8 @@ function Register({ onAccountCreated }) {
             type="email"
             placeholder="Your email"
             value={email}
-            onChange={(event) =>
-              setEmail(event.target.value)
-            }
+            onChange={(event) => setEmail(event.target.value)}
           />
-
 
           <label>
             Password
@@ -128,13 +104,10 @@ function Register({ onAccountCreated }) {
             type="password"
             placeholder="Create a password"
             value={password}
-            onChange={(event) =>
-              setPassword(event.target.value)
-            }
+            onChange={(event) => setPassword(event.target.value)}
           />
 
-
-          {/* Student and Instructor buttons */}
+          {/* Student / Instructor selection */}
 
           <div className="role-buttons">
 
@@ -148,7 +121,6 @@ function Register({ onAccountCreated }) {
               Student
             </button>
 
-
             <button
               type="button"
               className={`role-btn ${
@@ -161,9 +133,6 @@ function Register({ onAccountCreated }) {
 
           </div>
 
-
-          {/* Create Account */}
-
           <button
             type="submit"
             className="primary-btn full-btn"
@@ -172,7 +141,6 @@ function Register({ onAccountCreated }) {
           </button>
 
         </form>
-
 
         <p className="auth-switch">
 
@@ -192,3 +160,4 @@ function Register({ onAccountCreated }) {
 }
 
 export default Register;
+

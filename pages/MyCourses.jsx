@@ -1,25 +1,56 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import CourseCard from "../components/Coursecard";
+import CourseCard from "../components/CourseCard";
 import courses from "../data/courseData";
+import "./MyCourses.css";
 
 function MyCourses() {
 
-  const enrolledIds =
+  const [enrolledIds, setEnrolledIds] = useState(
     JSON.parse(
       localStorage.getItem("enrolledCourses") || "[]"
-    );
+    )
+  );
+
 
   const myCourses = courses.filter(
     (course) => enrolledIds.includes(course.id)
   );
 
 
+  // Remove a course from My Courses
+  const removeCourse = (courseId) => {
+
+    const updatedIds = enrolledIds.filter(
+      (id) => id !== courseId
+    );
+
+
+    // Update localStorage
+    localStorage.setItem(
+      "enrolledCourses",
+      JSON.stringify(updatedIds)
+    );
+
+
+    // Update the page immediately
+    setEnrolledIds(updatedIds);
+  };
+
+
   return (
     <main className="page">
 
+
+      {/* =========================
+          PAGE HEADER
+      ========================= */}
+
       <div className="courses-header">
 
-        <span>YOUR LEARNING</span>
+        <span>
+          YOUR LEARNING
+        </span>
 
         <h1>
           My Courses
@@ -32,6 +63,10 @@ function MyCourses() {
       </div>
 
 
+      {/* =========================
+          COURSES
+      ========================= */}
+
       {myCourses.length > 0 ? (
 
         <div className="course-grid">
@@ -41,6 +76,7 @@ function MyCourses() {
             <CourseCard
               key={course.id}
               course={course}
+              onRemove={removeCourse}
             />
 
           ))}
@@ -49,9 +85,15 @@ function MyCourses() {
 
       ) : (
 
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
         <div className="empty-state">
 
-          <div>🎓</div>
+          <div>
+            🎓
+          </div>
 
           <h2>
             You haven't enrolled in any courses yet.

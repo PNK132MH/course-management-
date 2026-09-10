@@ -1,0 +1,219 @@
+/* =========================
+   LEARNING PAGE
+========================= */
+
+.learning-page {
+  min-height: 100vh;
+  background: #f3f0e8;
+  padding: 40px;
+}
+
+.learning-header {
+  max-width: 1400px;
+  margin: 0 auto 25px;
+}
+
+.learning-header h1 {
+  margin: 0;
+  color: #222;
+  font-size: 32px;
+}
+
+.learning-header p {
+  color: #666;
+  margin-top: 8px;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.learning-container {
+  max-width: 1400px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 350px;
+
+  gap: 25px;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.video-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  background: black;
+
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+.video-info {
+  padding: 20px 5px 5px;
+}
+
+.video-info h2 {
+  margin: 0;
+  color: #222;
+  font-size: 24px;
+}
+
+.video-info p {
+  color: #666;
+}
+
+/* =========================
+   TOPICS SIDEBAR
+========================= */
+
+.topics-sidebar {
+  background: white;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  border: 1px solid #ddd;
+
+  max-height: 600px;
+}
+
+.topics-sidebar h2 {
+  margin: 0;
+
+  padding: 20px;
+
+  background: #222;
+
+  color: #f0c84b;
+
+  font-size: 20px;
+}
+
+.topics-list {
+  display: flex;
+
+  flex-direction: column;
+
+  max-height: 530px;
+
+  overflow-y: auto;
+}
+
+/* =========================
+   TOPIC BUTTON
+========================= */
+
+.topic {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 16px;
+
+  border: none;
+
+  border-bottom: 1px solid #eee;
+
+  background: white;
+
+  color: #333;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.topic:hover {
+  background: #e5e5e5;
+}
+
+.topic.active {
+  background: #f0c84b;
+
+  color: #111;
+}
+
+.topic span {
+  font-size: 13px;
+}
+
+.topic div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.topic strong {
+  font-size: 14px;
+}
+
+.topic small {
+  color: #777;
+}
+
+.topic.active small {
+  color: #333;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+  .learning-page {
+    padding: 20px;
+  }
+
+  .learning-container {
+    grid-template-columns: 1fr;
+  }
+
+  .topics-sidebar {
+    order: 2;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .learning-page {
+    padding: 10px;
+  }
+
+  .learning-header h1 {
+    font-size: 25px;
+  }
+
+  .video-section {
+    padding: 10px;
+  }
+
+}
