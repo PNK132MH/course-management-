@@ -2,26 +2,33 @@ import { useState } from "react";
 import "../src/FreexPaid.css";
 
 function HtmlCssCourse() {
-
   const topics = [
     { title: "Introduction", time: 0 },
-    { title: "HTML Basics", time: 62 },
-    { title: "CSS Basics", time: 1062 },
-    { title: "Hovers, Transitions & Shadows", time: 2679 },
-    { title: "Chrome DevTools & CSS Box Model", time: 3790 },
-    { title: "Text Styles", time: 4650 },
-    { title: "HTML Structure", time: 6738 },
-    { title: "Images & Text Boxes", time: 7868 },
-    { title: "CSS Display Property", time: 8742 },
-    { title: "The div Element", time: 9298 },
-    { title: "Nested Layouts Technique", time: 10015 },
-    { title: "CSS Grid", time: 11818 },
-    { title: "Flexbox", time: 13438 },
-    { title: "Nested Flexbox", time: 15321 },
-    { title: "CSS Position", time: 17076 },
-    { title: "Position Absolute & Relative", time: 18434 },
-    { title: "Finish the Project", time: 20029 },
-    { title: "More CSS Features", time: 22066 }
+    { title: "HTML Basics", time: 215 },
+    { title: "Hyperlinks", time: 667 },
+    { title: "Images", time: 915 },
+    { title: "Audio", time: 1609 },
+    { title: "Video", time: 2119 },
+    { title: "Text Formatting", time: 2290 },
+    { title: "Span & Div", time: 2557 },
+    { title: "Lists", time: 2997 },
+    { title: "Tables", time: 3311 },
+    { title: "Buttons", time: 3253 },
+    { title: "Forms", time: 3568 },
+    { title: "Headers & Footers", time: 4642 },
+
+    { title: "Introduction to CSS", time: 4990 },
+    { title: "Colors", time: 5470 },
+    { title: "Fonts", time: 5722 },
+    { title: "Borders", time: 6162 },
+    { title: "Shadows", time: 6429 },
+    { title: "Margins", time: 6557 },
+    { title: "Float", time: 6901 },
+    { title: "Display", time: 7411 },
+    { title: "Height & Width", time: 7663 },
+    { title: "Position", time: 7957 },
+    { title: "Pseudo-classes", time: 8952 },
+    { title: "Flexbox", time: 12503 }
   ];
 
   const [selectedTopic, setSelectedTopic] = useState(topics[0]);
@@ -29,6 +36,7 @@ function HtmlCssCourse() {
   return (
     <main className="learning-page">
 
+      {/* HEADER */}
       <div className="learning-header">
 
         <h1>HTML & CSS for Beginners</h1>
@@ -39,14 +47,17 @@ function HtmlCssCourse() {
 
       </div>
 
+
+      {/* COURSE CONTENT */}
       <div className="learning-container">
 
+        {/* VIDEO */}
         <section className="video-section">
 
           <div className="video-container">
 
             <iframe
-              src={`https://www.youtube.com/embed/G3e-cpL7ofc?start=${selectedTopic.time}`}
+              src={`https://www.youtube.com/embed/ZOx2g9NqtPQ?start=${selectedTopic.time}`}
               title="HTML and CSS Full Course"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -54,9 +65,13 @@ function HtmlCssCourse() {
 
           </div>
 
+
+          {/* VIDEO INFORMATION */}
           <div className="video-info">
 
-            <h2>{selectedTopic.title}</h2>
+            <h2>
+              {selectedTopic.title}
+            </h2>
 
             <p>
               Continue learning HTML and CSS step by step.
@@ -66,9 +81,14 @@ function HtmlCssCourse() {
 
         </section>
 
+
+        {/* TOPICS */}
         <aside className="topics-sidebar">
 
-          <h2>Course Topics</h2>
+          <h2>
+            Course Topics
+          </h2>
+
 
           <div className="topics-list">
 
@@ -84,13 +104,20 @@ function HtmlCssCourse() {
                 onClick={() => setSelectedTopic(topic)}
               >
 
-                <span>▶</span>
+                <span>
+                  ▶
+                </span>
+
 
                 <div>
 
-                  <strong>{topic.title}</strong>
+                  <strong>
+                    {topic.title}
+                  </strong>
+
 
                   <small>
+
                     {Math.floor(topic.time / 3600) > 0 &&
                       `${Math.floor(topic.time / 3600)}:`}
 
@@ -103,6 +130,7 @@ function HtmlCssCourse() {
                     {(topic.time % 60)
                       .toString()
                       .padStart(2, "0")}
+
                   </small>
 
                 </div>

@@ -1,9 +1,9 @@
 
 import { useMemo, useState } from "react";
-import CourseCard from "../components/CourseCard";
-import courses from "../data/courseData";
+import CourseCard from "../../components/CourseCard";
+import courses from "../../data/courseData";
 
-import "./Dashboard.css";
+import "./StudentDashboard.css";
 
 function StudentDashboard() {
 

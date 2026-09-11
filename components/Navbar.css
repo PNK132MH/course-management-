@@ -1,4 +1,3 @@
-
 /* =========================
    NAVBAR
 ========================= */
@@ -7,105 +6,43 @@
   height: 72px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 7%;
   border-bottom: 1px solid #e5e7eb;
-  background: #ffffff;
+  background: white;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-
-/* =========================
-   LEFT SIDE
-========================= */
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-
-/* =========================
-   LOGO
-========================= */
-
 .logo {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: #111827;
   text-decoration: none;
 }
 
-
-/* =========================
-   HAMBURGER BUTTON
-========================= */
-
-.menu-button {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid #d1d5db;
-  border-radius: 7px;
-
-  background: #ffffff;
-  color: #111827;
-
-  font-size: 23px;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.menu-button:hover {
-  background: #e5e7eb;
-}
-
-
-/* =========================
-   LOGGED OUT LINKS
-========================= */
-
 .nav-links {
-  margin-left: auto;
-
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 30px;
 }
 
 .nav-links a {
-  color: #374151;
-  font-weight: 500;
   text-decoration: none;
+  color: #374151;
+  font-weight: 600;
 }
 
 .nav-links a:hover {
   color: #6b7280;
 }
 
-
-/* =========================
-   REGISTER BUTTON
-========================= */
-
 .register-btn {
   background: #111827;
-  color: #ffffff !important;
-
-  padding: 11px 18px;
-
-  border-radius: 6px;
-
-  text-decoration: none;
+  color: white !important;
+  padding: 10px 18px;
+  border-radius: 8px;
 }
 
 .register-btn:hover {
@@ -114,21 +51,34 @@
 
 
 /* =========================
-   MENU OVERLAY
+   DASHBOARD BUTTON
+========================= */
+
+.dashboard-button {
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+  color: #111827;
+}
+
+.dashboard-button:hover {
+  color: #6b7280;
+}
+
+
+/* =========================
+   DARK OVERLAY
 ========================= */
 
 .menu-overlay {
   position: fixed;
-
   top: 0;
   left: 0;
-
   width: 100%;
-  height: 100%;
-
+  height: 100vh;
   background: rgba(0, 0, 0, 0.35);
-
-  z-index: 200;
+  z-index: 999;
 }
 
 
@@ -138,21 +88,46 @@
 
 .side-menu {
   position: fixed;
-
   top: 0;
   left: 0;
 
-  width: 320px;
+  width: 500px;
+  max-width: 90vw;
+
   height: 100vh;
 
-  background: #ffffff;
+  background: white;
 
-  z-index: 300;
+  z-index: 1000;
 
-  display: flex;
-  flex-direction: column;
+  /* IMPORTANT:
+     This allows the sidebar itself to scroll */
+  overflow-y: auto;
+  overflow-x: hidden;
 
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   SIDEBAR SCROLLBAR
+========================= */
+
+.side-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.side-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.side-menu::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+.side-menu::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }
 
 
@@ -165,115 +140,122 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 25px;
+  padding: 35px 40px;
 
   border-bottom: 1px solid #e5e7eb;
+
+  position: sticky;
+  top: 0;
+
+  background: white;
+
+  z-index: 2;
 }
 
-.side-menu-header h2 {
-  margin: 0 0 5px;
-
+.side-menu-logo {
+  font-size: 32px;
+  font-weight: 800;
   color: #111827;
-
-  font-size: 22px;
 }
 
-.side-menu-header p {
-  margin: 0;
+.side-menu-subtitle {
+  margin-top: 5px;
+  font-size: 20px;
+  color: #6b7280;
+}
+
+.close-menu {
+  border: none;
+  background: transparent;
+
+  font-size: 35px;
+  font-weight: 600;
 
   color: #6b7280;
 
-  font-size: 14px;
-}
-
-
-/* =========================
-   CLOSE BUTTON
-========================= */
-
-.close-menu {
-  width: 38px;
-  height: 38px;
-
-  border: none;
-  border-radius: 6px;
-
-  background: #f3f4f6;
-
-  color: #111827;
-
-  font-size: 25px;
-
   cursor: pointer;
-
-  transition: 0.2s;
 }
 
 .close-menu:hover {
-  background: #e5e7eb;
+  color: #111827;
 }
 
 
 /* =========================
-   MENU LINKS
+   SIDE MENU LINKS
 ========================= */
 
 .side-menu-links {
-  padding: 20px;
-
   display: flex;
   flex-direction: column;
 
+  padding: 25px;
   gap: 8px;
 }
 
+
+/* Links AND menu buttons */
+
 .side-menu-links a,
-.menu-option {
+.side-menu-links button {
+  width: 100%;
+
   display: flex;
   align-items: center;
 
-  gap: 15px;
+  gap: 20px;
 
-  width: 100%;
-
-  padding: 15px;
+  padding: 18px 25px;
 
   border: none;
-  border-radius: 7px;
+  border-radius: 10px;
 
-  background: #ffffff;
+  background: transparent;
 
   color: #374151;
 
   text-decoration: none;
 
-  font-size: 16px;
-  font-weight: 600;
-
-  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
 
   cursor: pointer;
 
-  box-sizing: border-box;
+  text-align: left;
 
-  transition: 0.2s;
+  box-sizing: border-box;
 }
 
+
+/* Hover */
+
 .side-menu-links a:hover,
-.menu-option:hover {
+.side-menu-links button:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+
+/* Active-looking item */
+
+.side-menu-links a.active {
   background: #e5e7eb;
   color: #111827;
 }
 
 
 /* =========================
-   MENU ICONS
+   MENU ICON
 ========================= */
 
-.side-menu-links span {
-  width: 25px;
+.side-menu-links a span,
+.side-menu-links button span {
+  width: 35px;
 
-  font-size: 19px;
+  display: flex;
+  justify-content: center;
+
+  font-size: 25px;
 }
 
 
@@ -281,68 +263,41 @@
    SIGN OUT
 ========================= */
 
-.side-menu-bottom {
-  margin-top: auto;
+.sign-out {
+  margin-top: 20px;
 
-  padding: 15px;
+  border-top: 1px solid #e5e7eb !important;
 
-  border-top: 1px solid #e5e7eb;
+  border-radius: 0 !important;
+
+  padding-top: 25px !important;
 }
 
-.sign-out-btn {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-
-  gap: 15px;
-
-  padding: 15px;
-
-  background: #ffffff;
-
-  border: none;
-  border-radius: 7px;
-
-  color: #374151;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.sign-out-btn:hover {
-  background: #e5e7eb;
-  color: #111827;
+.sign-out:hover {
+  background: #e5e7eb !important;
 }
 
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media (max-width: 650px) {
-
-  .navbar {
-    padding: 0 20px;
-  }
-
-  .nav-links {
-    gap: 10px;
-  }
-
-  .nav-links a:not(.register-btn) {
-    display: none;
-  }
-
+@media (max-width: 600px) {
   .side-menu {
-    width: 300px;
+    width: 90vw;
   }
 
-}
+  .side-menu-header {
+    padding: 25px;
+  }
 
+  .side-menu-links {
+    padding: 20px;
+  }
+
+  .side-menu-links a,
+  .side-menu-links button {
+    font-size: 18px;
+    padding: 16px 20px;
+  }
+}

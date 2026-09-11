@@ -206,6 +206,16 @@ function Navbar({ isLoggedIn }) {
                     Earnings
                   </Link>
 
+                  {/* Contact */}
+                  <Link
+                  to="/contact-instructors"
+                  >
+                   <button className="menu-option">
+                    <span>📞</span>
+                    Contact
+                  </button>
+                  </Link>
+                 
 
                   {/* Instructor Profile */}
                   <Link
@@ -253,17 +263,17 @@ function Navbar({ isLoggedIn }) {
 
 
                   {/* Progress */}
-                  <button className="menu-option">
-                    <span>📈</span>
-                    Progress
-                  </button>
+                  <Link to="/progress" className="dashboard-menu-item">
+  📈
+  <span>Progress</span>
+</Link>
 
 
                   {/* Certificates */}
-                  <button className="menu-option">
-                    <span>🏆</span>
-                    Certificates
-                  </button>
+                  <Link to="/certificates" className="dashboard-menu-item">
+  🏆
+  <span>Certificates</span>
+</Link>
 
 
                   {/* Profile */}

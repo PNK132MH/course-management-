@@ -1,0 +1,150 @@
+.certificates-page {
+  min-height: 100vh;
+  background: #f7f5ef;
+  padding: 50px 7%;
+}
+
+
+/* HEADER */
+
+.certificates-header {
+  margin-bottom: 40px;
+}
+
+.certificates-header span {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #c49a00;
+}
+
+.certificates-header h1 {
+  margin: 10px 0;
+  font-size: 42px;
+  color: #111827;
+}
+
+.certificates-header p {
+  margin: 0;
+  font-size: 18px;
+  color: #667085;
+}
+
+
+/* EMPTY */
+
+.certificates-empty {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 70px 30px;
+  text-align: center;
+}
+
+.certificate-icon {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.certificates-empty h2 {
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.certificates-empty p {
+  color: #667085;
+  margin: 0;
+}
+
+
+/* LIST */
+
+.certificates-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+  gap: 25px;
+}
+
+
+/* CARD */
+
+.certificate-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+
+/* TOP */
+
+.certificate-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.certificate-top .certificate-icon {
+  margin: 0;
+  font-size: 32px;
+}
+
+.certificate-top span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #c49a00;
+}
+
+
+/* TITLE */
+
+.certificate-card h2 {
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.certificate-card p {
+  color: #667085;
+  line-height: 1.6;
+}
+
+
+/* BUTTON */
+
+.certificate-button {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.certificate-button:hover {
+  background: #c49a00;
+  color: #111827;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .certificates-page {
+    padding: 35px 5%;
+  }
+
+  .certificates-header h1 {
+    font-size: 32px;
+  }
+
+}

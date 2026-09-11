@@ -14,12 +14,13 @@ import Courses from "../pages/Courses";
 import CourseDetails from "../pages/CourseDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import MyCourses from "../pages/MyCourses";
+import MyCourses from "../pages/Students/MyCourses";
 
-import StudentDashboard from "../pages/StudentDashboard";
+import StudentDashboard from "../pages/Students/StudentDashboard";
 import InstructorDashboard from "../pages/Instructor/InstructorDashboard";
 
-import Profile from "../pages/Profile";
+
+import Profile from "../pages/Students/Profile";
 
 import NotFound from "../pages/NotFound";
 import CreateCourse from "../pages/Instructor/CreateCourse";
@@ -28,6 +29,12 @@ import Students from "../pages/Instructor/Students";
 import StudentProgress from  "../pages/Instructor/StudentProgress";
 import Earnings from  "../pages/Instructor/Earnings";
 import InstructorProfile from  "../pages/Instructor/InstructorProfile";
+import InstructorWelcome from "../pages/Instructor/InstructorWelcome";
+import ContactInstructors from "../pages/Instructor/ContactInstructors";
+
+
+import Progress from "../pages/Students/Progress";
+import Certificates from "../pages/Students/Certificates";
 
 
 // =========================
@@ -226,6 +233,23 @@ function App() {
 <Route
   path="/instructor-profile"
   element={<InstructorProfile />}
+/>
+<Route
+  path="/progress"
+  element={<Progress />}
+/>
+
+<Route
+  path="/certificates"
+  element={<Certificates />}
+/>
+<Route
+  path="/instructor-welcome"
+  element={<InstructorWelcome />}
+/>
+<Route
+  path="/contact-instructors"
+  element={<ContactInstructors />}
 />
       </Routes>
 

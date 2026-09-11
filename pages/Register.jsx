@@ -50,11 +50,19 @@ function Register({ onAccountCreated }) {
 
       navigate("/student-dashboard");
 
-    } else if (role === "instructor") {
+     } else if (role === "instructor") {
 
-      navigate("/instructor-dashboard");
+  // The instructor sees the welcome page
+  // after their first registration.
 
-    }
+  localStorage.setItem(
+    "instructorWelcomeCompleted",
+    "false"
+  );
+
+  navigate("/instructor-welcome");
+
+}
 
   };
 
