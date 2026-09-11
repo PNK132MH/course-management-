@@ -1,0 +1,47 @@
+.approval-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.approval-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.approval-card h2 {
+  margin: 0 0 8px;
+}
+
+.approval-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.approval-card button {
+  background: #111827;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.approval-card button:hover {
+  background: #6b7280;
+}
+
+@media (max-width: 600px) {
+
+  .approval-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+}

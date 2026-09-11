@@ -12,40 +12,40 @@ function MyCourses() {
     )
   );
 
+  // Get paid courses
+  const paidIds = JSON.parse(
+    localStorage.getItem("paidCourses") || "[]"
+  );
 
   const myCourses = courses.filter(
     (course) => enrolledIds.includes(course.id)
   );
 
-
   // Remove a course from My Courses
   const removeCourse = (courseId) => {
+
+    // Paid courses cannot be removed
+    if (paidIds.includes(courseId)) {
+      alert("You already paid for this course. You cannot remove it.");
+      return;
+    }
 
     const updatedIds = enrolledIds.filter(
       (id) => id !== courseId
     );
 
-
-    // Update localStorage
     localStorage.setItem(
       "enrolledCourses",
       JSON.stringify(updatedIds)
     );
 
-
-    // Update the page immediately
     setEnrolledIds(updatedIds);
   };
-
 
   return (
     <main className="page">
 
-
-      {/* =========================
-          PAGE HEADER
-      ========================= */}
-
+      {/* PAGE HEADER */}
       <div className="courses-header">
 
         <span>
@@ -62,22 +62,36 @@ function MyCourses() {
 
       </div>
 
-
-      {/* =========================
-          COURSES
-      ========================= */}
-
+      {/* COURSES */}
       {myCourses.length > 0 ? (
 
         <div className="course-grid">
 
           {myCourses.map((course) => (
 
-            <CourseCard
-              key={course.id}
-              course={course}
-              onRemove={removeCourse}
-            />
+            <div key={course.id}>
+
+              <CourseCard
+                course={course}
+                onRemove={removeCourse}
+              />
+
+              {/* COURSE STATUS */}
+              <div className="course-status">
+
+                {paidIds.includes(course.id) ? (
+                  <span className="paid-status">
+                    ✅ PAID
+                  </span>
+                ) : (
+                  <span className="free-status">
+                    🆓 FREE TRIAL
+                  </span>
+                )}
+
+              </div>
+
+            </div>
 
           ))}
 
@@ -85,9 +99,7 @@ function MyCourses() {
 
       ) : (
 
-        /* =========================
-           EMPTY STATE
-        ========================= */
+        /* EMPTY STATE */
 
         <div className="empty-state">
 

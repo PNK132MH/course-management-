@@ -160,13 +160,13 @@ function CourseDetails() {
   // PAID TRIAL
   // =================================
 
-  const goToPaid = () => {
+ const goToPaid = () => {
 
-    setShowTrialPopup(false);
+  setShowTrialPopup(false);
 
-    alert("Paid trial selected!");
+  navigate(`/payment/${course.id}`);
 
-  };
+};
 
 
   return (

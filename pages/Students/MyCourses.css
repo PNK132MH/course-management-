@@ -61,3 +61,16 @@
 
   color: white;
 }
+.course-status {
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.paid-status {
+  color: #15803d;
+}
+
+.free-status {
+  color: #6b7280;
+}

@@ -3,23 +3,28 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar({ isLoggedIn }) {
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  // Get the currently logged-in user's information
+  // Get the current logged-in user
   const currentUser = JSON.parse(
     localStorage.getItem("currentUser") || "null"
   );
 
-  // Check the user's role
-  const isInstructor = currentUser?.role === "instructor";
+  const role = currentUser?.role;
 
   // Sign out
   const handleSignOut = () => {
+
     localStorage.removeItem("currentUser");
+
     setMenuOpen(false);
+
     navigate("/");
+
+    // Refresh the page so the navbar changes immediately
     window.location.reload();
   };
 
@@ -33,7 +38,8 @@ function Navbar({ isLoggedIn }) {
 
         <div className="navbar-left">
 
-          {/* Hamburger only appears when logged in */}
+          {/* HAMBURGER */}
+
           {isLoggedIn && (
             <button
               className="menu-button"
@@ -44,6 +50,8 @@ function Navbar({ isLoggedIn }) {
             </button>
           )}
 
+          {/* LOGO */}
+
           <Link to="/" className="logo">
             LearnHub
           </Link>
@@ -52,10 +60,11 @@ function Navbar({ isLoggedIn }) {
 
 
         {/* =========================
-            LOGGED OUT NAVBAR
+            NORMAL NAVIGATION
         ========================= */}
 
         {!isLoggedIn && (
+
           <div className="nav-links">
 
             <Link to="/">
@@ -78,6 +87,7 @@ function Navbar({ isLoggedIn }) {
             </Link>
 
           </div>
+
         )}
 
       </nav>
@@ -88,40 +98,38 @@ function Navbar({ isLoggedIn }) {
       ========================= */}
 
       {isLoggedIn && menuOpen && (
+
         <>
 
           {/* Dark background */}
+
           <div
             className="menu-overlay"
             onClick={() => setMenuOpen(false)}
           ></div>
 
 
-          {/* =========================
-              SIDE MENU
-          ========================= */}
+          {/* SIDE MENU */}
 
           <aside className="side-menu">
 
-
-            {/* =========================
-                HEADER
-            ========================= */}
+            {/* HEADER */}
 
             <div className="side-menu-header">
 
               <div>
 
-                <h2>
-                  LearnHub
-                </h2>
+                <h2>LearnHub</h2>
 
                 <p>
-                  Dashboard Menu
+                  {role === "admin"
+                    ? "Admin Menu"
+                    : role === "instructor"
+                    ? "Instructor Menu"
+                    : "Student Menu"}
                 </p>
 
               </div>
-
 
               <button
                 className="close-menu"
@@ -134,191 +142,220 @@ function Navbar({ isLoggedIn }) {
 
 
             {/* =========================
-                MENU LINKS
+                STUDENT MENU
             ========================= */}
 
-            <div className="side-menu-links">
+            {role === "student" && (
+
+              <div className="side-menu-links">
+
+                <Link
+                  to="/student-dashboard"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>🏠</span>
+                  Dashboard
+                </Link>
+
+                <Link
+                  to="/my-courses"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📚</span>
+                  My Courses
+                </Link>
+
+                <Link
+                  to="/progress"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📈</span>
+                  Progress
+                </Link>
+
+                <Link
+                  to="/certificates"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>🏆</span>
+                  Certificates
+                </Link>
+
+                <Link
+                  to="/profile"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>👤</span>
+                  Profile
+                </Link>
+
+                <Link
+                  to="/settings"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>⚙️</span>
+                  Settings
+                </Link>
+
+              </div>
+
+            )}
 
 
-              {/* =================================
-                  INSTRUCTOR MENU
-              ================================= */}
+            {/* =========================
+                INSTRUCTOR MENU
+            ========================= */}
 
-              {isInstructor ? (
-                <>
+            {role === "instructor" && (
 
-                  {/* Dashboard */}
-                  <Link
-                    to="/instructor-dashboard"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>🏠</span>
-                    Dashboard
-                  </Link>
+              <div className="side-menu-links">
 
+                <Link
+                  to="/instructor-dashboard"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>🏠</span>
+                  Dashboard
+                </Link>
 
-                  {/* Create Course */}
-                  <Link
-                    to="/create-course"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>➕</span>
-                    Create Course
-                  </Link>
+                <Link
+                  to="/create-course"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>➕</span>
+                  Create Course
+                </Link>
 
+                <Link
+                  to="/edit-courses"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📚</span>
+                  Edit Courses
+                </Link>
 
-                  {/* My Courses / Edit Courses */}
-                  <Link
-                    to="/edit-courses"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>📚</span>
-                    My Courses
-                  </Link>
+                <Link
+                  to="/students"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>👥</span>
+                  Students
+                </Link>
 
+                <Link
+                  to="/student-progress"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📈</span>
+                  Student Progress
+                </Link>
 
-                  {/* Students */}
-                  <Link
-                    to="/students"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>👨‍🎓</span>
-                    Students
-                  </Link>
+                <Link
+                  to="/earnings"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>💰</span>
+                  Earnings
+                </Link>
 
+                <Link
+                  to="/instructor-profile"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>👤</span>
+                  Profile
+                </Link>
 
-                  {/* Student Progress */}
-                  <Link
-                    to="/student-progress"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>📈</span>
-                    Student Progress
-                  </Link>
+                <Link
+                  to="/settings"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>⚙️</span>
+                  Settings
+                </Link>
 
+              </div>
 
-                  {/* Earnings */}
-                  <Link
-                    to="/earnings"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>💰</span>
-                    Earnings
-                  </Link>
-
-                  {/* Contact */}
-                  <Link
-                  to="/contact-instructors"
-                  >
-                   <button className="menu-option">
-                    <span>📞</span>
-                    Contact
-                  </button>
-                  </Link>
-                 
-
-                  {/* Instructor Profile */}
-                  <Link
-                    to="/instructor-profile"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>👤</span>
-                    Profile
-                  </Link>
+            )}
 
 
-                  {/* Settings */}
-                  <button className="menu-option">
-                    <span>⚙️</span>
-                    Settings
-                  </button>
+            {/* =========================
+                ADMIN MENU
+            ========================= */}
 
-                </>
-              ) : (
+            {role === "admin" && (
 
-                /* =================================
-                   STUDENT MENU
-                ================================= */
+              <div className="side-menu-links">
 
-                <>
+                <Link
+                  to="/admin"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>🏠</span>
+                  Dashboard
+                </Link>
 
-                  {/* Dashboard */}
-                  <Link
-                    to="/student-dashboard"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>🏠</span>
-                    Dashboard
-                  </Link>
+                <Link
+                  to="/admin/users"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>👥</span>
+                  Manage Users
+                </Link>
 
+                <Link
+                  to="/admin/courses"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📚</span>
+                  Manage Courses
+                </Link>
 
-                  {/* My Courses */}
-                  <Link
-                    to="/my-courses"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>📚</span>
-                    My Courses
-                  </Link>
+                <Link
+                  to="/admin/approvals"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📝</span>
+                  Course Approvals
+                </Link>
 
+                <Link
+                  to="/admin/analytics"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📊</span>
+                  Analytics
+                </Link>
 
-                  {/* Progress */}
-                  <Link to="/progress" className="dashboard-menu-item">
-  📈
-  <span>Progress</span>
-</Link>
+              </div>
 
-
-                  {/* Certificates */}
-                  <Link to="/certificates" className="dashboard-menu-item">
-  🏆
-  <span>Certificates</span>
-</Link>
-
-
-                  {/* Profile */}
-                  <Link
-                    to="/profile"
-                    className="menu-option"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <span>👤</span>
-                    Profile
-                  </Link>
-
-
-                  {/* Settings */}
-                  <button className="menu-option">
-                    <span>⚙️</span>
-                    Settings
-                  </button>
-
-                </>
-
-              )}
-
-            </div>
+            )}
 
 
             {/* =========================
                 SIGN OUT
             ========================= */}
 
-            <div className="side-menu-bottom">
+            {isLoggedIn && (
 
-              <button
-                className="sign-out-btn"
-                onClick={handleSignOut}
-              >
-                <span>🚪</span>
-                Sign Out
-              </button>
+              <div className="side-menu-bottom">
 
-            </div>
+                <button
+                  className="sign-out-btn"
+                  onClick={handleSignOut}
+                >
+                  <span>🚪</span>
+                  Sign Out
+                </button>
+
+              </div>
+
+            )}
 
           </aside>
 
         </>
+
       )}
 
     </>

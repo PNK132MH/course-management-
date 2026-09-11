@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -21,7 +17,7 @@ import InstructorDashboard from "../pages/Instructor/InstructorDashboard";
 
 
 import Profile from "../pages/Students/Profile";
-
+import Payment from "../pages/Payment";
 import NotFound from "../pages/NotFound";
 import CreateCourse from "../pages/Instructor/CreateCourse";
 import EditCourses from "../pages/Instructor/EditCourses";
@@ -33,8 +29,18 @@ import InstructorWelcome from "../pages/Instructor/InstructorWelcome";
 import ContactInstructors from "../pages/Instructor/ContactInstructors";
 
 
+
 import Progress from "../pages/Students/Progress";
 import Certificates from "../pages/Students/Certificates";
+
+// =========================
+//Admin
+// =========================
+import AdminDashboard from "../pages/Admin/AdminDashboard";
+import ManageUsers from "../pages/Admin/ManageUsers";
+import ManageCourses from "../pages/Admin/ManageCourses";
+import CourseApprovals from "../pages/Admin/CourseApprovals";
+import Analytics from "../pages/Admin/Analytics";
 
 
 // =========================
@@ -98,6 +104,10 @@ function App() {
           path="/course/:id"
           element={<CourseDetails />}
         />
+        <Route
+  path="/payment/:id"
+  element={<Payment />}
+/>
 
 
         {/* =========================
@@ -251,6 +261,15 @@ function App() {
   path="/contact-instructors"
   element={<ContactInstructors />}
 />
+
+<Route
+  path="/admin"
+  element={<AdminDashboard />}
+/>
+<Route path="/admin/users" element={<ManageUsers />} />
+<Route path="/admin/courses" element={<ManageCourses />} />
+<Route path="/admin/approvals" element={<CourseApprovals />} />
+<Route path="/admin/analytics" element={<Analytics />} />
       </Routes>
 
 

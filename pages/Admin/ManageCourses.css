@@ -1,0 +1,53 @@
+.admin-course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.admin-course-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.admin-course-card h2 {
+  font-size: 20px;
+  margin-top: 0;
+  color: #111827;
+}
+
+.admin-course-card p {
+  color: #6b7280;
+}
+
+.admin-course-card strong {
+  display: block;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.admin-course-card button {
+  border: none;
+  background: #111827;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.admin-course-card button:hover {
+  background: #6b7280;
+}
+
+@media (max-width: 900px) {
+  .admin-course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-course-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,58 @@
+.users-table {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.user-row {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.user-row:last-child {
+  border-bottom: none;
+}
+
+.user-header {
+  background: #f3f4f6;
+}
+
+.role-badge {
+  background: #eeeeee;
+  padding: 6px 10px;
+  border-radius: 5px;
+  width: fit-content;
+  font-size: 13px;
+}
+
+.user-row button {
+  width: fit-content;
+  border: none;
+  background: #111827;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.user-row button:hover {
+  background: #6b7280;
+}
+
+@media (max-width: 700px) {
+
+  .user-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .user-header {
+    display: none;
+  }
+
+}
