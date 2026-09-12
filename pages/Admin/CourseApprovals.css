@@ -1,47 +1,235 @@
+/* =========================
+   COURSE APPROVALS PAGE
+========================= */
+
+.approval-page {
+  min-height: 100vh;
+
+  background: #f5f5f5;
+
+  padding: 70px 20px;
+}
+
+.approval-container {
+  max-width: 1080px;
+
+  margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.approval-header {
+  margin-bottom: 55px;
+}
+
+.approval-header span {
+  font-size: 14px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  color: #777;
+}
+
+.approval-header h1 {
+  margin: 15px 0 10px;
+
+  font-size: 52px;
+
+  color: #111827;
+}
+
+.approval-header p {
+  margin: 0;
+
+  font-size: 21px;
+
+  color: #64748b;
+}
+
+/* =========================
+   APPROVAL LIST
+========================= */
+
 .approval-list {
   display: flex;
+
   flex-direction: column;
-  gap: 15px;
+
+  gap: 22px;
 }
+
+/* =========================
+   APPROVAL CARD
+========================= */
 
 .approval-card {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 25px;
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
+  gap: 30px;
+
+  padding: 35px 38px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
 }
 
-.approval-card h2 {
-  margin: 0 0 8px;
+.approval-info {
+  flex: 1;
 }
 
-.approval-card p {
-  margin: 0;
-  color: #6b7280;
+.pending-label {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  color: #777;
 }
 
-.approval-card button {
+.approval-info h2 {
+  margin: 0 0 10px;
+
+  font-size: 30px;
+
+  color: #172033;
+}
+
+.approval-info p {
+  margin: 5px 0;
+
+  color: #64748b;
+
+  font-size: 17px;
+}
+
+/* =========================
+   REVIEW BUTTON
+========================= */
+
+.review-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 120px;
+
+  padding: 15px 22px;
+
+  border-radius: 8px;
+
   background: #111827;
+
   color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  transition: 0.2s;
 }
 
-.approval-card button:hover {
-  background: #6b7280;
+.review-btn:hover {
+  background: #777;
 }
 
-@media (max-width: 600px) {
+/* =========================
+   EMPTY STATE
+========================= */
+
+.no-pending-courses {
+  padding: 70px 30px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+}
+
+.no-pending-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 60px;
+
+  height: 60px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #f0c84b;
+
+  color: #111;
+
+  font-size: 28px;
+
+  font-weight: bold;
+}
+
+.no-pending-courses h2 {
+  margin: 0 0 10px;
+
+  color: #172033;
+}
+
+.no-pending-courses p {
+  margin: 0;
+
+  color: #777;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .approval-page {
+    padding: 40px 15px;
+  }
+
+  .approval-header h1 {
+    font-size: 38px;
+  }
+
+  .approval-header p {
+    font-size: 17px;
+  }
 
   .approval-card {
     flex-direction: column;
+
     align-items: flex-start;
-    gap: 20px;
+
+    padding: 25px;
+  }
+
+  .review-btn {
+    width: 100%;
   }
 
 }

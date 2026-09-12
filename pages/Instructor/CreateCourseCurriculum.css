@@ -1,0 +1,315 @@
+/* =========================
+   CURRICULUM
+========================= */
+
+.create-curriculum {
+  padding-top: 10px;
+}
+
+.curriculum-title {
+  margin-bottom: 25px;
+}
+
+.curriculum-title span {
+  font-size: 13px;
+  font-weight: bold;
+  color: #777;
+}
+
+.curriculum-title h2 {
+  margin: 8px 0;
+  color: #222;
+}
+
+.curriculum-title p {
+  margin: 0;
+  color: #777;
+}
+
+/* =========================
+   BOX
+========================= */
+
+.curriculum-box {
+  padding: 22px;
+  margin-top: 20px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  background: #fafafa;
+}
+
+.curriculum-box h3 {
+  margin-top: 0;
+  color: #222;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.curriculum-box label {
+  display: block;
+
+  margin: 15px 0 7px;
+
+  font-weight: bold;
+  color: #333;
+}
+
+.curriculum-box input,
+.curriculum-box select {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 12px;
+
+  border: 1px solid #ccc;
+  border-radius: 7px;
+
+  font-size: 15px;
+  font-family: inherit;
+  background: white;
+}
+
+.curriculum-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.curriculum-input-row input {
+  flex: 1;
+}
+
+.curriculum-input-row button,
+.add-lesson-button {
+  padding: 12px 16px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #222;
+  color: white;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.curriculum-input-row button:hover,
+.add-lesson-button:hover {
+  background: #777;
+}
+
+/* =========================
+   FORM ROW
+========================= */
+
+.curriculum-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.curriculum-form-row > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.preview-checkbox {
+  display: flex !important;
+  align-items: center;
+
+  gap: 8px;
+
+  font-weight: normal !important;
+}
+
+.preview-checkbox input {
+  width: auto;
+}
+
+/* =========================
+   CURRICULUM LIST
+========================= */
+
+.curriculum-list {
+  margin-top: 30px;
+}
+
+.curriculum-list > h3 {
+  color: #222;
+}
+
+.empty-curriculum {
+  color: #777;
+}
+
+.curriculum-section {
+  margin-top: 15px;
+
+  border: 1px solid #ddd;
+  border-radius: 9px;
+
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px;
+
+  background: #f5f5f5;
+}
+
+.section-header span {
+  font-size: 12px;
+  color: #777;
+}
+
+.section-header h4 {
+  margin: 4px 0 0;
+  color: #222;
+}
+
+.section-header button,
+.curriculum-lesson button {
+  padding: 7px 11px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #eee;
+  color: #333;
+
+  cursor: pointer;
+}
+
+.section-header button:hover,
+.curriculum-lesson button:hover {
+  background: #777;
+  color: white;
+}
+
+/* =========================
+   LESSON
+========================= */
+
+.curriculum-lesson {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 15px;
+
+  border-top: 1px solid #eee;
+}
+
+.lesson-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: #f0c84b;
+
+  font-weight: bold;
+}
+
+.lesson-info {
+  flex: 1;
+}
+
+.lesson-info strong {
+  color: #222;
+}
+
+.lesson-info p {
+  margin: 4px 0 0;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+.no-lessons {
+  padding: 15px;
+  margin: 0;
+
+  color: #777;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.curriculum-actions {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 30px;
+}
+
+.curriculum-back-button,
+.curriculum-next-button {
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 7px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.curriculum-back-button {
+  background: #eee;
+  color: #222;
+}
+
+.curriculum-back-button:hover {
+  background: #777;
+  color: white;
+}
+
+.curriculum-next-button {
+  background: #f0c84b;
+  color: #111;
+}
+
+.curriculum-next-button:hover {
+  background: #777;
+  color: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .curriculum-input-row {
+    flex-direction: column;
+  }
+
+  .curriculum-form-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .curriculum-lesson {
+    flex-wrap: wrap;
+  }
+
+}

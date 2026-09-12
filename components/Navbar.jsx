@@ -257,6 +257,13 @@ function Navbar({ isLoggedIn }) {
                   <span>💰</span>
                   Earnings
                 </Link>
+                 <Link
+                  to="/contact-instructors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span>📧</span>
+                  Contact
+                </Link>
 
                 <Link
                   to="/instructor-profile"

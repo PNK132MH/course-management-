@@ -41,6 +41,7 @@ import ManageUsers from "../pages/Admin/ManageUsers";
 import ManageCourses from "../pages/Admin/ManageCourses";
 import CourseApprovals from "../pages/Admin/CourseApprovals";
 import Analytics from "../pages/Admin/Analytics";
+import ReviewCourse from "../pages/Admin/ReviewCourse";
 
 
 // =========================
@@ -270,6 +271,10 @@ function App() {
 <Route path="/admin/courses" element={<ManageCourses />} />
 <Route path="/admin/approvals" element={<CourseApprovals />} />
 <Route path="/admin/analytics" element={<Analytics />} />
+<Route
+  path="/admin/approvals/:id"
+  element={<ReviewCourse />}
+/>
       </Routes>
 
 

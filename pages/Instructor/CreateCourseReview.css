@@ -1,0 +1,277 @@
+/* =========================
+   REVIEW
+========================= */
+
+.create-review {
+  padding-top: 10px;
+}
+
+.review-title {
+  margin-bottom: 25px;
+}
+
+.review-title span {
+  font-size: 13px;
+  font-weight: bold;
+  color: #777;
+}
+
+.review-title h2 {
+  margin: 8px 0;
+  color: #222;
+}
+
+.review-title p {
+  margin: 0;
+  color: #777;
+}
+
+/* =========================
+   REVIEW CARD
+========================= */
+
+.review-card {
+  margin-top: 20px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  background: white;
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 18px;
+
+  background: #f5f5f5;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.review-card-header h3 {
+  margin: 0;
+
+  color: #222;
+}
+
+.review-card-header span {
+  color: #777;
+
+  font-size: 13px;
+}
+
+.review-content {
+  padding: 5px 18px;
+}
+
+/* =========================
+   REVIEW ROW
+========================= */
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 15px 0;
+
+  border-bottom: 1px solid #eee;
+}
+
+.review-row:last-child {
+  border-bottom: none;
+}
+
+.review-row strong {
+  color: #333;
+}
+
+.review-row span {
+  color: #666;
+
+  text-align: right;
+
+  max-width: 65%;
+}
+
+/* =========================
+   REVIEW SECTION
+========================= */
+
+.review-section {
+  padding: 15px 0;
+
+  border-bottom: 1px solid #eee;
+}
+
+.review-section:last-child {
+  border-bottom: none;
+}
+
+.review-section h4 {
+  margin: 0 0 10px;
+
+  color: #222;
+}
+
+/* =========================
+   REVIEW LESSON
+========================= */
+
+.review-lesson {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 10px;
+
+  margin-top: 7px;
+
+  border-radius: 7px;
+
+  background: #fafafa;
+}
+
+.review-lesson > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: #f0c84b;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.review-lesson strong {
+  color: #222;
+}
+
+.review-lesson p {
+  margin: 3px 0 0;
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+/* =========================
+   APPROVAL MESSAGE
+========================= */
+
+.approval-message {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  margin-top: 25px;
+
+  padding: 18px;
+
+  border-radius: 9px;
+
+  background: #f3f0e8;
+}
+
+.approval-message > span {
+  font-size: 25px;
+}
+
+.approval-message strong {
+  color: #222;
+}
+
+.approval-message p {
+  margin: 5px 0 0;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.review-actions {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 30px;
+}
+
+.review-back-button,
+.submit-course-button {
+  padding: 13px 20px;
+
+  border: none;
+  border-radius: 7px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.review-back-button {
+  background: #eee;
+  color: #222;
+}
+
+.review-back-button:hover {
+  background: #777;
+  color: white;
+}
+
+.submit-course-button {
+  background: #f0c84b;
+  color: #111;
+}
+
+.submit-course-button:hover {
+  background: #777;
+  color: white;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .review-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 5px;
+  }
+
+  .review-row {
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .review-row span {
+    max-width: 100%;
+
+    text-align: left;
+  }
+
+  .approval-message {
+    flex-direction: column;
+  }
+
+}
