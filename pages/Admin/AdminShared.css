@@ -1,0 +1,9 @@
+/* =========================
+   ADMIN PAGE BACKGROUNDS
+========================= */
+
+.admin-page,
+.approval-page,
+.review-course-page {
+  background: #f5f1e8 !important;
+}

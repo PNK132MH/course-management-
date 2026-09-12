@@ -1,42 +1,65 @@
 import { useState } from "react";
 
-import {BrowserRouter,Routes,Route} from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+
+/* =========================
+   COMPONENTS
+========================= */
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+
+/* =========================
+   MAIN PAGES
+========================= */
 
 import Home from "../pages/Home";
 import Courses from "../pages/Courses";
 import CourseDetails from "../pages/CourseDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import MyCourses from "../pages/Students/MyCourses";
-
-import StudentDashboard from "../pages/Students/StudentDashboard";
-import InstructorDashboard from "../pages/Instructor/InstructorDashboard";
-
-
-import Profile from "../pages/Students/Profile";
 import Payment from "../pages/Payment";
 import NotFound from "../pages/NotFound";
+
+
+/* =========================
+   STUDENT
+========================= */
+
+import MyCourses from "../pages/Students/MyCourses";
+import StudentDashboard from "../pages/Students/StudentDashboard";
+import Profile from "../pages/Students/Profile";
+import Progress from "../pages/Students/Progress";
+import Certificates from "../pages/Students/Certificates";
+import Settings from "../pages/Students/Settings";
+
+
+/* =========================
+   INSTRUCTOR
+========================= */
+
+import InstructorDashboard from "../pages/Instructor/InstructorDashboard";
+import InstructorProfile from "../pages/Instructor/InstructorProfile";
+import InstructorWelcome from "../pages/Instructor/InstructorWelcome";
 import CreateCourse from "../pages/Instructor/CreateCourse";
 import EditCourses from "../pages/Instructor/EditCourses";
 import Students from "../pages/Instructor/Students";
-import Settings from "../pages/Students/Settings";
-import StudentProgress from  "../pages/Instructor/StudentProgress";
-import Earnings from  "../pages/Instructor/Earnings";
-import InstructorProfile from  "../pages/Instructor/InstructorProfile";
-import InstructorWelcome from "../pages/Instructor/InstructorWelcome";
+import StudentProgress from "../pages/Instructor/StudentProgress";
+import Earnings from "../pages/Instructor/Earnings";
 import ContactInstructors from "../pages/Instructor/ContactInstructors";
+import InstructorNotifications from "../pages/Instructor/InstructorNotifications";
 
 
+/* =========================
+   ADMIN
+========================= */
 
-import Progress from "../pages/Students/Progress";
-import Certificates from "../pages/Students/Certificates";
-
-// =========================
-//Admin
-// =========================
 import AdminDashboard from "../pages/Admin/AdminDashboard";
 import ManageUsers from "../pages/Admin/ManageUsers";
 import ManageCourses from "../pages/Admin/ManageCourses";
@@ -45,9 +68,9 @@ import Analytics from "../pages/Admin/Analytics";
 import ReviewCourse from "../pages/Admin/ReviewCourse";
 
 
-// =========================
-// FREE / PAID COURSES
-// =========================
+/* =========================
+   COURSE PLAYER PAGES
+========================= */
 
 import ReactCourse from "../FreexPaid/React";
 import JavaScriptCourse from "../FreexPaid/JavaScript";
@@ -57,39 +80,67 @@ import ReactNativeCourse from "../FreexPaid/ReactNative";
 import GitHubCourse from "../FreexPaid/GitHub";
 
 
+/* =========================
+   ADMIN BACKGROUND
+========================= */
+
+import "../pages/Admin/AdminShared.css";
+
+
+/* =========================
+   APP CSS
+========================= */
+
 import "./App.css";
 
 
 function App() {
 
-  // Temporary frontend login state
+  /* =========================
+     LOGIN STATE
+  ========================= */
+
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("currentUser") !== null
   );
 
 
-  // Runs after creating an account
+  /* =========================
+     ACCOUNT CREATED
+  ========================= */
+
   const handleAccountCreated = () => {
+
     setIsLoggedIn(true);
+
   };
 
 
-  // Runs after logging in
+  /* =========================
+     LOGIN
+  ========================= */
+
   const handleLogin = () => {
+
     setIsLoggedIn(true);
+
   };
 
 
   return (
+
     <BrowserRouter>
 
-      <Navbar isLoggedIn={isLoggedIn} />
+      <Navbar
+        isLoggedIn={isLoggedIn}
+      />
 
 
       <Routes>
 
+
         {/* =========================
-            MAIN PAGES
+            HOME
         ========================= */}
 
         <Route
@@ -97,19 +148,35 @@ function App() {
           element={<Home />}
         />
 
+
+        {/* =========================
+            COURSES
+        ========================= */}
+
         <Route
           path="/courses"
           element={<Courses />}
         />
 
+
+        {/* =========================
+            COURSE DETAILS
+        ========================= */}
+
         <Route
           path="/course/:id"
           element={<CourseDetails />}
         />
+
+
+        {/* =========================
+            PAYMENT
+        ========================= */}
+
         <Route
-  path="/payment/:id"
-  element={<Payment />}
-/>
+          path="/payment/:id"
+          element={<Payment />}
+        />
 
 
         {/* =========================
@@ -119,7 +186,9 @@ function App() {
         <Route
           path="/login"
           element={
-            <Login onLogin={handleLogin} />
+            <Login
+              onLogin={handleLogin}
+            />
           }
         />
 
@@ -139,17 +208,7 @@ function App() {
 
 
         {/* =========================
-            MY COURSES
-        ========================= */}
-
-        <Route
-          path="/my-courses"
-          element={<MyCourses />}
-        />
-
-
-        {/* =========================
-            DASHBOARDS
+            STUDENT
         ========================= */}
 
         <Route
@@ -158,23 +217,88 @@ function App() {
         />
 
         <Route
-          path="/instructor-dashboard"
-          element={<InstructorDashboard />}
+          path="/my-courses"
+          element={<MyCourses />}
         />
 
+        <Route
+          path="/progress"
+          element={<Progress />}
+        />
 
-        {/* =========================
-            PROFILE
-        ========================= */}
+        <Route
+          path="/certificates"
+          element={<Certificates />}
+        />
 
         <Route
           path="/profile"
           element={<Profile />}
         />
 
+        <Route
+          path="/settings"
+          element={<Settings />}
+        />
+
 
         {/* =========================
-            COURSE PLAYER PAGES
+            INSTRUCTOR
+        ========================= */}
+
+        <Route
+          path="/instructor-dashboard"
+          element={<InstructorDashboard />}
+        />
+
+        <Route
+          path="/instructor-welcome"
+          element={<InstructorWelcome />}
+        />
+
+        <Route
+          path="/create-course"
+          element={<CreateCourse />}
+        />
+
+        <Route
+          path="/edit-courses"
+          element={<EditCourses />}
+        />
+
+        <Route
+          path="/students"
+          element={<Students />}
+        />
+
+        <Route
+          path="/student-progress"
+          element={<StudentProgress />}
+        />
+
+        <Route
+          path="/earnings"
+          element={<Earnings />}
+        />
+
+        <Route
+          path="/instructor-profile"
+          element={<InstructorProfile />}
+        />
+
+        <Route
+          path="/contact-instructors"
+          element={<ContactInstructors />}
+        />
+
+        <Route
+          path="/instructor-notifications"
+          element={<InstructorNotifications />}
+        />
+
+
+        {/* =========================
+            COURSE PLAYER
         ========================= */}
 
         <Route
@@ -209,6 +333,41 @@ function App() {
 
 
         {/* =========================
+            ADMIN
+        ========================= */}
+
+        <Route
+          path="/admin"
+          element={<AdminDashboard />}
+        />
+
+        <Route
+          path="/admin/users"
+          element={<ManageUsers />}
+        />
+
+        <Route
+          path="/admin/courses"
+          element={<ManageCourses />}
+        />
+
+        <Route
+          path="/admin/approvals"
+          element={<CourseApprovals />}
+        />
+
+        <Route
+          path="/admin/analytics"
+          element={<Analytics />}
+        />
+
+        <Route
+          path="/admin/approvals/:id"
+          element={<ReviewCourse />}
+        />
+
+
+        {/* =========================
             PAGE NOT FOUND
         ========================= */}
 
@@ -217,75 +376,13 @@ function App() {
           element={<NotFound />}
         />
 
-<Route
-  path="/create-course"
-  element={<CreateCourse />}
-/>
-
-<Route
-  path="/edit-courses"
-  element={<EditCourses />}
-/>
-
-<Route
-  path="/students"
-  element={<Students />}
-/>
-<Route
-  path="/settings"
-  element={<Settings />}
-/>
-
-<Route
-  path="/student-progress"
-  element={<StudentProgress />}
-/>
-
-<Route
-  path="/earnings"
-  element={<Earnings />}
-/>
-
-<Route
-  path="/instructor-profile"
-  element={<InstructorProfile />}
-/>
-<Route
-  path="/progress"
-  element={<Progress />}
-/>
-
-<Route
-  path="/certificates"
-  element={<Certificates />}
-/>
-<Route
-  path="/instructor-welcome"
-  element={<InstructorWelcome />}
-/>
-<Route
-  path="/contact-instructors"
-  element={<ContactInstructors />}
-/>
-
-<Route
-  path="/admin"
-  element={<AdminDashboard />}
-/>
-<Route path="/admin/users" element={<ManageUsers />} />
-<Route path="/admin/courses" element={<ManageCourses />} />
-<Route path="/admin/approvals" element={<CourseApprovals />} />
-<Route path="/admin/analytics" element={<Analytics />} />
-<Route
-  path="/admin/approvals/:id"
-  element={<ReviewCourse />}
-/>
       </Routes>
 
 
       <Footer />
 
     </BrowserRouter>
+
   );
 }
 

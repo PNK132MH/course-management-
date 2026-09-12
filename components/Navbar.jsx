@@ -249,6 +249,13 @@ function Navbar({ isLoggedIn }) {
                   <span>📈</span>
                   Student Progress
                 </Link>
+                <Link
+               to="/instructor-notifications"
+               onClick={() => setMenuOpen(false)}
+                >
+              <span>🔔</span>
+              Notifications
+                  </Link>
 
                 <Link
                   to="/earnings"

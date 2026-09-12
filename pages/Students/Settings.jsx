@@ -15,10 +15,6 @@ function Settings() {
     savedSettings.language || "English (US)"
   );
 
-  const [appearance, setAppearance] = useState(
-    savedSettings.appearance || "Light"
-  );
-
   const [saved, setSaved] = useState(false);
 
 
@@ -115,31 +111,6 @@ function Settings() {
             >
               <option>English (US)</option>
               <option>English (UK)</option>
-            </select>
-
-          </div>
-
-
-          {/* APPEARANCE */}
-
-          <div className="setting-row">
-
-            <div>
-              <h3>Appearance</h3>
-
-              <p>
-                Choose how LearnHub looks.
-              </p>
-            </div>
-
-            <select
-              value={appearance}
-              onChange={(event) =>
-                setAppearance(event.target.value)
-              }
-            >
-              <option>Light</option>
-              <option>Dark</option>
             </select>
 
           </div>
