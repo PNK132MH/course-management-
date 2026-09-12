@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "LearnHub",
+    "slug": "learnhub-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#4f46e5"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.learnhub.mobile"
+    },
+    "android": {
+      "package": "com.learnhub.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#4f46e5"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "LearnHub needs access to your photos so you can set a profile picture.",
+          "cameraPermission": "LearnHub needs access to your camera so you can take a profile picture."
+        }
+      ],
+      "expo-asset"
+    ]
+  }
+}
