@@ -71,10 +71,11 @@ function MyCourses() {
 
             <div key={course.id}>
 
-              <CourseCard
-                course={course}
-                onRemove={removeCourse}
-              />
+             <CourseCard
+  course={course}
+  onRemove={removeCourse}
+  continueCourse={true}
+/>
 
               {/* COURSE STATUS */}
               <div className="course-status">
