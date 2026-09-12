@@ -278,8 +278,8 @@
 }
 
 .sign-out-btn:hover {
-  background: #eeeeee;
-  color: #111827;
+  background: red;
+  color: #eeeeee;
 }
 
 .sign-out-btn span {

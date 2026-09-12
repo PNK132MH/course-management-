@@ -22,6 +22,7 @@ import NotFound from "../pages/NotFound";
 import CreateCourse from "../pages/Instructor/CreateCourse";
 import EditCourses from "../pages/Instructor/EditCourses";
 import Students from "../pages/Instructor/Students";
+import Settings from "../pages/Students/Settings";
 import StudentProgress from  "../pages/Instructor/StudentProgress";
 import Earnings from  "../pages/Instructor/Earnings";
 import InstructorProfile from  "../pages/Instructor/InstructorProfile";
@@ -229,6 +230,10 @@ function App() {
 <Route
   path="/students"
   element={<Students />}
+/>
+<Route
+  path="/settings"
+  element={<Settings />}
 />
 
 <Route

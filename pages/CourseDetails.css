@@ -1,46 +1,144 @@
+/* =========================
+   COURSE DETAILS PAGE
+========================= */
+
 .details-page {
-  padding: 60px 7%;
+  min-height: 75vh;
+
+  padding: 60px 5% 80px;
+
   background: #f5f1e8;
-  min-height: 70vh;
 }
 
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
 .details-main {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
   display: grid;
+
   grid-template-columns: 2fr 1fr;
-  gap: 40px;
+
+  gap: 35px;
+
+  align-items: start;
 }
+
+
+/* =========================
+   COURSE INFORMATION
+========================= */
 
 .details-info {
   background: #ffffff;
-  padding: 35px;
-  border-radius: 10px;
+
+  padding: 38px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+}
+
+.course-category {
+  display: inline-block;
+
+  margin-bottom: 15px;
+
+  color: #b8860b;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1.5px;
 }
 
 .details-info h1 {
-  color: #1f2937;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
+
+  color: #111827;
+
+  font-size: 42px;
+
+  line-height: 1.15;
 }
 
 .details-description {
   color: #6b7280;
+
+  font-size: 17px;
+
   line-height: 1.7;
+
+  margin-bottom: 22px;
 }
 
+
+/* =========================
+   RATING
+========================= */
+
 .details-rating {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
   margin: 20px 0;
+
+  color: #6b7280;
+}
+
+.details-rating strong {
+  color: #111827;
+
+  font-size: 18px;
+}
+
+.details-rating span:nth-child(2) {
   color: #b8860b;
 }
 
+.details-info > p:last-child {
+  color: #6b7280;
+}
+
+.details-info > p:last-child strong {
+  color: #1f2937;
+}
+
+
+/* =========================
+   ENROLL CARD
+========================= */
+
 .enroll-card {
   background: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
+
   border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  position: sticky;
+
+  top: 90px;
 }
 
 .enroll-card img {
   width: 100%;
-  height: 200px;
+
+  height: 210px;
+
   object-fit: cover;
 }
 
@@ -49,162 +147,335 @@
 }
 
 .enroll-content h2 {
-  color: #1f2937;
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 30px;
 }
 
-.trial-btn {
-  width: 100%;
-  padding: 13px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 6px;
-  background: #1f2937;
-  color: #ffffff;
-  cursor: pointer;
-}
+.enroll-content > p {
+  margin: 6px 0 20px;
 
-.trial-btn:hover {
-  background: #6b7280;
-}
-
-.course-includes {
-  margin-top: 20px;
   color: #6b7280;
 }
 
-@media (max-width: 800px) {
-  .details-main {
-    grid-template-columns: 1fr;
-  }
-}
-/* TRIAL POPUP */
 
+/* =========================
+   ENROLL BUTTON
+========================= */
+
+.enroll-content .full-btn {
+  width: 100%;
+}
+
+
+/* =========================
+   COURSE INCLUDES
+========================= */
+
+.enroll-content h3 {
+  margin: 28px 0 12px;
+
+  color: #1f2937;
+
+  font-size: 17px;
+}
+
+.course-includes {
+  margin: 0;
+
+  padding-left: 0;
+
+  list-style: none;
+
+  color: #6b7280;
+
+  line-height: 2;
+}
+
+
+/* =====================================================
+   GENERAL POPUP
+===================================================== */
+
+.register-popup-overlay,
 .trial-popup-overlay {
   position: fixed;
 
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
 
-  background: rgba(31, 41, 55, 0.55);
+  background: rgba(17, 24, 39, 0.6);
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   padding: 20px;
-
-  box-sizing: border-box;
 
   z-index: 1000;
 }
 
 
+/* =====================================================
+   REGISTRATION POPUP
+===================================================== */
+
+.register-popup {
+  position: relative;
+
+  width: 430px;
+
+  max-width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  padding: 35px;
+
+  text-align: center;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.register-popup h2 {
+  margin: 5px 0 12px;
+
+  color: #111827;
+
+  font-size: 25px;
+}
+
+.register-popup p {
+  margin: 0 0 25px;
+
+  color: #6b7280;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.popup-close {
+  position: absolute;
+
+  top: 12px;
+  right: 14px;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f3f4f6;
+
+  color: #374151;
+
+  font-size: 23px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.popup-close:hover {
+  background: red;
+
+  color: #e5e7eb;
+}
+
+
+/* =========================
+   REGISTRATION BUTTON AREA
+========================= */
+
+.register-popup-actions {
+  display: flex;
+
+  justify-content: center;
+}
+
+
+/* =========================
+   OK BUTTON
+========================= */
+
+.popup-ok-btn {
+  min-width: 110px;
+
+  border: none;
+
+  background: #111827;
+
+  color: #ffffff;
+
+  padding: 11px 25px;
+
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.popup-ok-btn:hover {
+  background: #6b7280;
+}
+
+
+/* =====================================================
+   FREE / PAID POPUP
+===================================================== */
+
 .trial-popup {
   position: relative;
 
-  width: 800px;
+  width: 850px;
+
   max-width: 100%;
 
   max-height: 90vh;
+
   overflow-y: auto;
 
   background: #f5f1e8;
 
-  border-radius: 15px;
+  border-radius: 16px;
 
-  padding: 35px;
+  padding: 40px;
 
-  box-sizing: border-box;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 
-.trial-popup-close {
-  position: absolute;
-
-  top: 15px;
-  right: 18px;
-
-  width: 35px;
-  height: 35px;
-
-  border: none;
-  border-radius: 50%;
-
-  background: #e5e7eb;
-
-  color: #1f2937;
-
-  font-size: 24px;
-
-  cursor: pointer;
-}
-
+/* =========================
+   POPUP TITLE
+========================= */
 
 .trial-popup h2 {
   margin: 0;
 
-  color: #1f2937;
+  color: #111827;
 
   font-size: 32px;
 
   text-align: center;
 }
 
-
-.trial-popup-description {
-  text-align: center;
+.trial-subtitle {
+  margin: 10px 0 30px;
 
   color: #6b7280;
 
-  margin-bottom: 30px;
+  text-align: center;
+
+  font-size: 16px;
 }
 
 
-/* TRIAL OPTIONS */
+/* =========================
+   TRIAL OPTIONS
+========================= */
 
-.trial-option {
+.trial-options {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+
+/* =========================
+   TRIAL CARD
+========================= */
+
+.trial-card {
   background: #ffffff;
 
-  border: 1px solid #d1d5db;
+  border: 1px solid #e5e7eb;
 
   border-radius: 12px;
 
-  padding: 25px;
+  padding: 28px;
 
-  margin-bottom: 18px;
+  display: flex;
+
+  flex-direction: column;
+
+  transition: 0.2s;
+}
+
+.trial-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #b8860b;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 
-.trial-option h3 {
-  margin-top: 0;
+/* =========================
+   TRIAL CARD TITLE
+========================= */
 
-  color: #1f2937;
+.trial-card h3 {
+  margin: 0 0 20px;
 
-  font-size: 23px;
+  color: #111827;
+
+  font-size: 22px;
 }
 
 
-.trial-option p {
+/* =========================
+   TRIAL LIST
+========================= */
+
+.trial-card ul {
+  margin: 0 0 25px;
+
+  padding-left: 0;
+
+  list-style: none;
+
   color: #6b7280;
+
+  line-height: 2;
+}
+
+.trial-card li {
+  margin-bottom: 4px;
 }
 
 
-.trial-option ul {
-  padding-left: 20px;
+/* =========================
+   FREE TRIAL BUTTON
+========================= */
 
-  color: #4b5563;
-
-  line-height: 1.9;
-}
-
-
-/* FREE BUTTON */
-
-.trial-free-btn {
+.free-trial-btn {
   width: 100%;
+
+  margin-top: auto;
 
   padding: 13px;
 
@@ -212,27 +483,32 @@
 
   border-radius: 7px;
 
-  background: #1f2937;
+  background: #111827;
 
   color: #ffffff;
 
-  font-size: 16px;
+  font-size: 15px;
+
+  font-weight: 600;
 
   cursor: pointer;
 
   transition: 0.2s;
 }
 
-
-.trial-free-btn:hover {
+.free-trial-btn:hover {
   background: #6b7280;
 }
 
 
-/* PAID BUTTON */
+/* =========================
+   PAID TRIAL BUTTON
+========================= */
 
-.trial-paid-btn {
+.paid-trial-btn {
   width: 100%;
+
+  margin-top: auto;
 
   padding: 13px;
 
@@ -244,7 +520,7 @@
 
   color: #111827;
 
-  font-size: 16px;
+  font-size: 15px;
 
   font-weight: 700;
 
@@ -253,23 +529,58 @@
   transition: 0.2s;
 }
 
-
-.trial-paid-btn:hover {
-  background: #6b7280;
+.paid-trial-btn:hover {
+  background: #111827;
 
   color: #ffffff;
 }
 
 
-@media (max-width: 600px) {
+/* =========================
+   RESPONSIVE
+========================= */
 
-  .trial-popup {
-    padding: 25px 20px;
+@media (max-width: 850px) {
+
+  .details-main {
+    grid-template-columns: 1fr;
   }
 
-  .trial-popup h2 {
-    font-size: 26px;
+  .enroll-card {
+    position: static;
+  }
+
+  .trial-options {
+    grid-template-columns: 1fr;
   }
 
 }
 
+
+@media (max-width: 600px) {
+
+  .details-page {
+    padding: 40px 20px 60px;
+  }
+
+  .details-info {
+    padding: 25px;
+  }
+
+  .details-info h1 {
+    font-size: 32px;
+  }
+
+  .trial-popup {
+    padding: 30px 20px;
+  }
+
+  .trial-popup h2 {
+    font-size: 27px;
+  }
+
+  .trial-card {
+    padding: 22px;
+  }
+
+}

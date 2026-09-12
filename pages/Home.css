@@ -53,16 +53,19 @@
 .section-heading span {
   color: #b8860b;
   font-weight: 700;
+  margin-left: 10px;
 }
 
 .section-heading h2 {
   font-size: 32px;
   color: #1f2937;
   margin: 8px 0;
+  margin-left: 10px;
 }
 
 .section-heading p {
   color: #6b7280;
+  margin-left: 10px;
 }
 
 
@@ -220,6 +223,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .feature {

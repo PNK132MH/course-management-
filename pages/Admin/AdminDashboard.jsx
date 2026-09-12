@@ -108,40 +108,6 @@ function AdminDashboard() {
 
       </section>
 
-      {/* PENDING COURSES */}
-
-      <section className="admin-section">
-
-        <h2>Pending Course Approvals</h2>
-
-        <div className="pending-course">
-
-          <div>
-            <h3>React Advanced</h3>
-            <p>Submitted by instructor</p>
-          </div>
-
-          <Link to="/admin/approvals" className="review-btn">
-            Review
-          </Link>
-
-        </div>
-
-        <div className="pending-course">
-
-          <div>
-            <h3>JavaScript Backend</h3>
-            <p>Submitted by instructor</p>
-          </div>
-
-          <Link to="/admin/approvals" className="review-btn">
-            Review
-          </Link>
-
-        </div>
-
-      </section>
-
     </main>
   );
 }

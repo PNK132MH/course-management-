@@ -2,63 +2,58 @@ import { useEffect, useRef, useState } from "react";
 import "./Profile.css";
 
 function Profile() {
-
-  // =========================
-  // USER INFORMATION
-  // =========================
-
   const currentUser = JSON.parse(
     localStorage.getItem("currentUser") || "{}"
   );
 
-  const savedName = currentUser.name || "";
+  const savedProfile = JSON.parse(
+    localStorage.getItem("profile") || "{}"
+  );
 
+  const savedName = currentUser.name || "";
   const nameParts = savedName.split(" ");
 
   const [firstName, setFirstName] = useState(
-    nameParts[0] || ""
+    savedProfile.firstName || nameParts[0] || ""
   );
 
   const [lastName, setLastName] = useState(
-    nameParts.slice(1).join(" ") || ""
+    savedProfile.lastName ||
+      nameParts.slice(1).join(" ") ||
+      ""
   );
 
-  const [headline, setHeadline] = useState("");
+  const [headline, setHeadline] = useState(
+    savedProfile.headline || ""
+  );
 
-  const [biography, setBiography] = useState("");
+  const [biography, setBiography] = useState(
+    savedProfile.biography || ""
+  );
 
-  const [language, setLanguage] = useState("English (US)");
+  const [language, setLanguage] = useState(
+    savedProfile.language || "English (US)"
+  );
 
   const [saved, setSaved] = useState(false);
-
-
-  // =========================
-  // PROFILE PHOTO
-  // =========================
 
   const [photo, setPhoto] = useState(
     localStorage.getItem("profilePhoto") || ""
   );
 
-  const [showPhotoOptions, setShowPhotoOptions] = useState(false);
+  const [showPhotoOptions, setShowPhotoOptions] =
+    useState(false);
 
-  const [cameraOpen, setCameraOpen] = useState(false);
+  const [cameraOpen, setCameraOpen] =
+    useState(false);
 
   const videoRef = useRef(null);
-
   const streamRef = useRef(null);
-
   const fileInputRef = useRef(null);
 
 
-  // =========================
-  // CAMERA
-  // =========================
-
   async function startCamera() {
-
     try {
-
       const stream =
         await navigator.mediaDevices.getUserMedia({
           video: true
@@ -69,63 +64,47 @@ function Profile() {
       setCameraOpen(true);
 
     } catch (error) {
-
       alert(
         "Could not access the camera. Please check your browser permissions."
       );
-
     }
   }
 
 
-  // Put camera stream inside video
   useEffect(() => {
-
-    if (cameraOpen && videoRef.current && streamRef.current) {
-
+    if (
+      cameraOpen &&
+      videoRef.current &&
+      streamRef.current
+    ) {
       videoRef.current.srcObject =
         streamRef.current;
-
     }
-
   }, [cameraOpen]);
 
 
-  // =========================
-  // STOP CAMERA
-  // =========================
-
   function stopCamera() {
-
     if (streamRef.current) {
-
       streamRef.current
         .getTracks()
         .forEach((track) => track.stop());
 
       streamRef.current = null;
-
     }
 
     setCameraOpen(false);
-
   }
 
 
-  // =========================
-  // TAKE PHOTO
-  // =========================
-
   function takePhoto() {
-
     const video = videoRef.current;
 
     if (!video) return;
 
-    const canvas = document.createElement("canvas");
+    const canvas =
+      document.createElement("canvas");
 
     canvas.width = video.videoWidth;
-
     canvas.height = video.videoHeight;
 
     const context = canvas.getContext("2d");
@@ -138,7 +117,8 @@ function Profile() {
       canvas.height
     );
 
-    const image = canvas.toDataURL("image/jpeg");
+    const image =
+      canvas.toDataURL("image/jpeg");
 
     setPhoto(image);
 
@@ -148,16 +128,10 @@ function Profile() {
     );
 
     stopCamera();
-
   }
 
 
-  // =========================
-  // CHOOSE PHOTO FROM DEVICE
-  // =========================
-
   function choosePhoto(event) {
-
     const file = event.target.files[0];
 
     if (!file) return;
@@ -165,35 +139,37 @@ function Profile() {
     const reader = new FileReader();
 
     reader.onload = function () {
-
       setPhoto(reader.result);
 
       localStorage.setItem(
         "profilePhoto",
         reader.result
       );
-
     };
 
     reader.readAsDataURL(file);
-
   }
 
 
-  // =========================
-  // SAVE PROFILE
-  // =========================
-
   function handleSave(event) {
-
     event.preventDefault();
 
+    const profile = {
+      firstName,
+      lastName,
+      headline,
+      biography,
+      language
+    };
+
+    localStorage.setItem(
+      "profile",
+      JSON.stringify(profile)
+    );
+
     const updatedUser = {
-
       ...currentUser,
-
       name: `${firstName} ${lastName}`.trim()
-
     };
 
     localStorage.setItem(
@@ -204,51 +180,28 @@ function Profile() {
     setSaved(true);
 
     setTimeout(() => {
-
       setSaved(false);
-
     }, 3000);
-
   }
 
 
-  // =========================
-  // CLEAN CAMERA
-  // =========================
-
   useEffect(() => {
-
     return () => {
-
       if (streamRef.current) {
-
         streamRef.current
           .getTracks()
           .forEach((track) => track.stop());
-
       }
-
     };
-
   }, []);
 
 
   return (
-
     <main className="profile-page">
-
-
-      {/* ==================================
-          LEFT PROFILE SIDEBAR
-      ================================== */}
 
       <aside className="profile-sidebar">
 
-
         <div className="profile-user">
-
-
-          {/* PROFILE PHOTO */}
 
           <button
             className="profile-avatar-button"
@@ -258,51 +211,37 @@ function Profile() {
           >
 
             {photo ? (
-
               <img
                 src={photo}
                 alt="Profile"
                 className="profile-avatar-image"
               />
-
             ) : (
-
               <div className="profile-avatar">
-
                 {firstName
                   ? firstName
                       .charAt(0)
                       .toUpperCase()
                   : "U"}
-
               </div>
-
             )}
 
           </button>
 
-
           <h2>
-
             {firstName || "Your Name"}
-
           </h2>
-
 
         </div>
 
 
-        {/* SIDEBAR OPTIONS */}
-
         <nav className="profile-menu">
-
 
           <button
             className="profile-menu-item active"
           >
             Profile
           </button>
-
 
           <button
             className="profile-menu-item"
@@ -313,39 +252,16 @@ function Profile() {
             Photo
           </button>
 
-
-          <button
-            className="profile-menu-item"
-            onClick={() =>
-              alert(
-                "Payment Methods section coming soon."
-              )
-            }
-          >
-            Payment methods
-          </button>
-
-
         </nav>
-
 
       </aside>
 
 
-      {/* ==================================
-          RIGHT SIDE
-      ================================== */}
-
       <section className="profile-content">
-
-
-        {/* HEADER */}
 
         <div className="profile-heading">
 
-          <h1>
-            Public profile
-          </h1>
+          <h1>Public profile</h1>
 
           <p>
             Add information about yourself
@@ -354,26 +270,14 @@ function Profile() {
         </div>
 
 
-        {/* PROFILE FORM */}
-
         <form
           className="profile-form"
           onSubmit={handleSave}
         >
 
-
-          {/* =========================
-              BASICS
-          ========================= */}
-
           <div className="form-section">
 
-            <h3>
-              Basics:
-            </h3>
-
-
-            {/* FIRST NAME */}
+            <h3>Basics:</h3>
 
             <div className="input-group">
 
@@ -391,8 +295,6 @@ function Profile() {
             </div>
 
 
-            {/* LAST NAME */}
-
             <div className="input-group">
 
               <input
@@ -409,8 +311,6 @@ function Profile() {
             </div>
 
 
-            {/* HEADLINE */}
-
             <div className="input-group headline-input">
 
               <input
@@ -425,36 +325,24 @@ function Profile() {
                 }
               />
 
-
               <span>
                 {60 - headline.length}
               </span>
 
             </div>
 
-
             <p className="helper-text">
-
               Add a short headline about yourself.
-
             </p>
 
           </div>
 
 
-          {/* =========================
-              BIOGRAPHY
-          ========================= */}
-
           <div className="form-section">
 
-            <h3>
-              Biography
-            </h3>
-
+            <h3>Biography</h3>
 
             <div className="bio-box">
-
 
               <div className="bio-toolbar">
 
@@ -465,7 +353,6 @@ function Profile() {
                   B
                 </button>
 
-
                 <button
                   type="button"
                   className="italic-button"
@@ -475,7 +362,6 @@ function Profile() {
 
               </div>
 
-
               <textarea
                 placeholder="Biography"
                 value={biography}
@@ -484,31 +370,22 @@ function Profile() {
                     event.target.value
                   )
                 }
-              ></textarea>
-
+              />
 
             </div>
 
-
             <p className="helper-text">
-
               Tell people a little about yourself.
-
             </p>
 
           </div>
 
-
-          {/* =========================
-              LANGUAGE
-          ========================= */}
 
           <div className="form-section language-section">
 
             <label>
               Language
             </label>
-
 
             <select
               value={language}
@@ -518,49 +395,23 @@ function Profile() {
                 )
               }
             >
-
-              <option>
-                English (US)
-              </option>
-
-              <option>
-                English (UK)
-              </option>
-
-              <option>
-                French
-              </option>
-
-              <option>
-                Spanish
-              </option>
-
-              <option>
-                Italian
-              </option>
-
+              <option>English (US)</option>
+              <option>English (UK)</option>
+              <option>French</option>
+              <option>Spanish</option>
+              <option>Italian</option>
             </select>
 
           </div>
 
 
-          {/* =========================
-              SAVE
-          ========================= */}
-
           <div className="save-section">
 
-
             {saved && (
-
               <p className="saved-message">
-
                 Profile saved successfully!
-
               </p>
-
             )}
-
 
             <button
               type="submit"
@@ -569,19 +420,12 @@ function Profile() {
               Save
             </button>
 
-
           </div>
-
 
         </form>
 
-
       </section>
 
-
-      {/* ==================================
-          PHOTO OPTIONS MODAL
-      ================================== */}
 
       {showPhotoOptions && (
 
@@ -592,14 +436,12 @@ function Profile() {
           }
         >
 
-
           <div
             className="photo-modal"
             onClick={(event) =>
               event.stopPropagation()
             }
           >
-
 
             <button
               className="close-photo-modal"
@@ -610,62 +452,38 @@ function Profile() {
               ×
             </button>
 
-
             <h2>
               Choose Profile Photo
             </h2>
-
 
             <p>
               Choose how you want to add your photo.
             </p>
 
 
-            {/* TAKE PHOTO */}
-
             <button
               className="photo-option-button"
               onClick={() => {
-
                 setShowPhotoOptions(false);
-
                 startCamera();
-
               }}
             >
-
-              <span>
-                📷
-              </span>
-
+              <span>📷</span>
               Take a photo
-
             </button>
 
-
-            {/* CHOOSE FROM DEVICE */}
 
             <button
               className="photo-option-button"
               onClick={() => {
-
                 fileInputRef.current.click();
-
                 setShowPhotoOptions(false);
-
               }}
             >
-
-              <span>
-                🖼️
-              </span>
-
+              <span>🖼️</span>
               Choose from device
-
             </button>
 
-
-            {/* HIDDEN FILE INPUT */}
 
             <input
               ref={fileInputRef}
@@ -675,7 +493,6 @@ function Profile() {
               style={{ display: "none" }}
             />
 
-
           </div>
 
         </div>
@@ -683,33 +500,22 @@ function Profile() {
       )}
 
 
-      {/* ==================================
-          CAMERA MODAL
-      ================================== */}
-
       {cameraOpen && (
 
         <div className="camera-overlay">
 
-
           <div className="camera-box">
 
-
-            <h2>
-              Take a photo
-            </h2>
-
+            <h2>Take a photo</h2>
 
             <video
               ref={videoRef}
               autoPlay
               playsInline
               className="camera-video"
-            ></video>
-
+            />
 
             <div className="camera-buttons">
-
 
               <button
                 className="take-photo-button"
@@ -718,7 +524,6 @@ function Profile() {
                 📷 Take Photo
               </button>
 
-
               <button
                 className="cancel-camera-button"
                 onClick={stopCamera}
@@ -726,9 +531,7 @@ function Profile() {
                 Cancel
               </button>
 
-
             </div>
-
 
           </div>
 
