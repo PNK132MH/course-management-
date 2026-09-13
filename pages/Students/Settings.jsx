@@ -25,7 +25,6 @@ function Settings() {
     const settings = {
       emailNotifications,
       language,
-      appearance
     };
 
     localStorage.setItem(
