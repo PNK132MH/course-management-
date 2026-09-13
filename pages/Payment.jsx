@@ -114,7 +114,7 @@ function Payment() {
             </p>
 
             <h3>
-              ${course.price}
+              ETB {course.price}
             </h3>
 
           </div>
@@ -188,7 +188,7 @@ function Payment() {
           </span>
 
           <strong>
-            ${course.price}
+            ETB {course.price}
           </strong>
 
         </div>
@@ -197,7 +197,7 @@ function Payment() {
           className="pay-button"
           onClick={handlePayment}
         >
-          Pay ${course.price}
+          Pay ETB {course.price}
         </button>
 
         <button

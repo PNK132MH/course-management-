@@ -242,7 +242,7 @@ function CourseDetails() {
           <div className="enroll-content">
 
             <h2>
-              ${course.price}
+              ETB {course.price}
             </h2>
 
 
@@ -384,7 +384,7 @@ function CourseDetails() {
               <div className="trial-card">
 
                 <h3>
-                  🆓 Free Trial
+                  Free Trial
                 </h3>
 
 
@@ -422,7 +422,7 @@ function CourseDetails() {
               <div className="trial-card paid-trial-card">
 
                 <h3>
-                  💳 Paid Trial
+                  Paid Trial
                 </h3>
 
 

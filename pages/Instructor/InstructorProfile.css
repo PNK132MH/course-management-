@@ -1,65 +1,54 @@
+/* =========================
+   PROFILE PAGE
+========================= */
+
 .instructor-profile-page {
   min-height: 100vh;
-
-  background: #f3f0e8;
-
+  background: #f5f1e8;
   padding: 40px;
 }
 
 .instructor-profile-container {
   max-width: 800px;
-
   margin: auto;
-
-  background: white;
-
+  background: #ffffff;
   padding: 30px;
-
   border-radius: 12px;
-
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .instructor-profile-container h1 {
-  color: #222;
-
+  color: #111111;
   margin-top: 0;
+  margin-bottom: 8px;
 }
 
 .instructor-profile-container > p {
-  color: #777;
+  color: #777777;
+  margin-top: 0;
 }
 
 
-/* PHOTO */
+/* =========================
+   PHOTO
+========================= */
 
 .instructor-photo-section {
   display: flex;
-
   align-items: center;
-
   gap: 20px;
-
   margin: 30px 0;
-
   padding-bottom: 25px;
-
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ded9d0;
 }
 
 .instructor-photo {
   width: 90px;
-
   height: 90px;
-
   border-radius: 50%;
-
-  background: #f0c84b;
+  background: #f5f1e8;
 
   display: flex;
-
   justify-content: center;
-
   align-items: center;
 
   overflow: hidden;
@@ -71,34 +60,31 @@
 
 .instructor-photo img {
   width: 100%;
-
   height: 100%;
-
   object-fit: cover;
 }
 
 .instructor-photo-section h2 {
   margin-top: 0;
-
-  color: #222;
+  color: #111111;
 }
+
+
+/* =========================
+   PHOTO BUTTON
+========================= */
 
 .photo-button {
   display: inline-block;
-
   padding: 10px 15px;
-
-  background: #222;
-
-  color: white;
-
+  background: #111111;
+  color: #ffffff;
   border-radius: 7px;
-
   cursor: pointer;
 }
 
 .photo-button:hover {
-  background: #777;
+  background: #333333;
 }
 
 .photo-button input {
@@ -106,65 +92,76 @@
 }
 
 
-/* FORM */
+/* =========================
+   FORM
+========================= */
 
 .instructor-profile-form {
   display: flex;
-
   flex-direction: column;
-
   gap: 10px;
 }
 
 .instructor-profile-form label {
   margin-top: 10px;
-
   font-weight: bold;
-
-  color: #333;
+  color: #333333;
 }
 
 .instructor-profile-form input,
 .instructor-profile-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+
   padding: 12px;
 
   border: 1px solid #ccc;
-
   border-radius: 7px;
 
+  background: #ffffff;
+  color: #111111;
+
   font-size: 15px;
+  outline: none;
+}
+
+.instructor-profile-form input:focus,
+.instructor-profile-form textarea:focus {
+  border-color: #111111;
 }
 
 .instructor-profile-form textarea {
   min-height: 120px;
-
   resize: vertical;
 }
 
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
 .instructor-profile-form button {
   margin-top: 20px;
-
   padding: 13px;
 
   border: none;
-
   border-radius: 7px;
 
-  background: #f0c84b;
-
-  color: #111;
+  background: #111111;
+  color: #ffffff;
 
   font-weight: bold;
-
   cursor: pointer;
 }
 
 .instructor-profile-form button:hover {
-  background: #777;
-
-  color: white;
+  background: #333333;
 }
 
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
@@ -174,7 +171,6 @@
 
   .instructor-photo-section {
     flex-direction: column;
-
     align-items: flex-start;
   }
 

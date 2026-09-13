@@ -107,14 +107,15 @@ function Register({ onAccountCreated }) {
           <label>
             Password
           </label>
-
-          <input
-            type="password"
-            placeholder="Create a password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-
+<input
+  type="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  minLength={8}
+  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+  title="Password must be at least 8 characters and contain an uppercase letter, lowercase letter, and number."
+  required
+/>
           {/* Student / Instructor selection */}
 
           <div className="role-buttons">

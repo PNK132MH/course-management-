@@ -1,145 +1,176 @@
-import { useMemo } from "react";
-import courses from "../../data/courseData";
+import { useState } from "react";
 import "./Certificates.css";
 
 function Certificates() {
-
-  /*
-    TEMPORARY FRONTEND DATA
-
-    A course is considered completed when
-    its progress reaches 100%.
-
-    Later the backend can provide this information.
-  */
-
-  const progressData = JSON.parse(
-    localStorage.getItem("courseProgress") || "{}"
+  const currentUser = JSON.parse(
+    localStorage.getItem("currentUser") || "{}"
   );
 
-
-  /*
-    Get enrolled courses.
-  */
-
-  const enrolledIds = JSON.parse(
-    localStorage.getItem("enrolledCourses") || "[]"
+  const paidIds = JSON.parse(
+    localStorage.getItem("paidCourses") || "[]"
   );
 
+  // For now, this is the course whose certificate is displayed.
+  // Later, this can come from the student's completed courses.
+  const certificate = {
+    courseId: 1,
+    studentName: currentUser.name || "PHILI",
+    courseName: "React for Beginners",
+    completionDate: "September 13, 2026",
+    certificateId: "LH-2026-001",
+  };
 
-  /*
-    Find completed courses.
-  */
+  const isPaid = paidIds.includes(certificate.courseId);
 
-  const completedCourses = useMemo(() => {
+  const [downloadMessage, setDownloadMessage] = useState("");
 
-    return courses.filter((course) => {
+  const handleDownload = () => {
+    if (!isPaid) {
+      setDownloadMessage(
+        "You must pay for this course before downloading the certificate."
+      );
+      return;
+    }
 
-      const isEnrolled =
-        enrolledIds.includes(course.id);
-
-      const progress =
-        progressData[course.id] || 0;
-
-      return isEnrolled && progress >= 100;
-
-    });
-
-  }, [enrolledIds, progressData]);
-
+    window.print();
+  };
 
   return (
-
     <main className="certificates-page">
 
-      {/* HEADER */}
+      <div className="certificate">
 
-      <section className="certificates-header">
+        <div className="certificate-header">
 
-        <span>ACHIEVEMENTS</span>
+          <div className="learnhub-logo">
+            <div className="cap-icon"></div>
 
-        <h1>Certificates</h1>
-
-        <p>
-          Your certificates will appear here when you complete a course.
-        </p>
-
-      </section>
-
-
-      {/* CERTIFICATES */}
-
-      {completedCourses.length === 0 ? (
-
-        <section className="certificates-empty">
-
-          <div className="certificate-icon">
-            🏆
+            <div>
+              <h2>LEARNHUB</h2>
+              <p>LEARNING PLATFORM</p>
+            </div>
           </div>
 
-          <h2>
-            No certificates yet
-          </h2>
+          <h1>CERTIFICATE OF COMPLETION</h1>
 
-          <p>
-            Complete a course to earn your first certificate.
+          <div className="gold-divider"></div>
+
+        </div>
+
+        <section className="certificate-content">
+
+          <p className="presented-text">
+            This certificate is proudly presented to
           </p>
 
-        </section>
+          <h2 className="student-name">
+            {certificate.studentName}
+          </h2>
 
-      ) : (
+          <div className="name-line"></div>
 
-        <section className="certificates-list">
+          <p className="completion-text">
+            for successfully completing the course
+          </p>
 
-          {completedCourses.map((course) => (
+          <h3 className="course-name">
+            {certificate.courseName}
+          </h3>
 
-            <div
-              className="certificate-card"
-              key={course.id}
-            >
+          <p className="description">
+            demonstrating commitment and completion of the
+            <br />
+            required course material.
+          </p>
 
-              <div className="certificate-top">
+          <div className="certificate-details">
 
-                <div className="certificate-icon">
-                  🏆
-                </div>
-
-                <span>
-                  COURSE COMPLETED
-                </span>
-
-              </div>
-
-
-              <h2>
-                {course.title}
-              </h2>
-
-
-              <p>
-                Congratulations! You have successfully
-                completed this course.
-              </p>
-
-
-              <button
-                className="certificate-button"
-                onClick={() =>
-                  alert(
-                    `Certificate for "${course.title}" is ready!`
-                  )
-                }
-              >
-                View Certificate
-              </button>
-
+            <div className="certificate-detail">
+              <span>Date of Completion</span>
+              <strong>{certificate.completionDate}</strong>
             </div>
 
-          ))}
+            <div className="certificate-seal">
+              <div className="seal-inner">
+                <strong>LH</strong>
+                <small>LEARNHUB</small>
+              </div>
+            </div>
+
+            <div className="certificate-detail">
+              <span>Certificate ID</span>
+              <strong>{certificate.certificateId}</strong>
+            </div>
+
+          </div>
+
+          <div className="certificate-signatures">
+
+            <div className="signature">
+              <div className="signature-line">
+                <span>Signature</span>
+              </div>
+
+              <p>Course Instructor</p>
+            </div>
+
+            <div className="signature">
+              <div className="signature-line">
+                <span>Signature</span>
+              </div>
+
+              <p>Administrator</p>
+            </div>
+
+          </div>
+
+          <div className="certificate-footer">
+            LEARNHUB
+          </div>
 
         </section>
 
-      )}
+      </div>
+
+      {/* DOWNLOAD AREA */}
+
+      <div className="certificate-download">
+
+        {isPaid ? (
+          <>
+            <button
+              className="download-certificate-btn"
+              onClick={handleDownload}
+            >
+              Download Certificate
+            </button>
+
+            <p>
+              Your certificate is available because this course is paid.
+            </p>
+          </>
+        ) : (
+          <>
+            <button
+              className="download-certificate-btn locked"
+              onClick={handleDownload}
+            >
+              🔒 Download Certificate
+            </button>
+
+            <p className="certificate-warning">
+              You must pay for this course before downloading the certificate.
+            </p>
+          </>
+        )}
+
+        {downloadMessage && (
+          <p className="certificate-warning">
+            {downloadMessage}
+          </p>
+        )}
+
+      </div>
 
     </main>
   );

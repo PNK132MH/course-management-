@@ -47,7 +47,7 @@ function CourseCard({ course, onRemove, continueCourse }) {
 
         <div className="course-bottom">
           <strong className="price">
-            ${course.price}
+            ETB {course.price}
           </strong>
 
           <button onClick={handleCourseButton}>

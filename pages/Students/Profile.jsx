@@ -1,543 +1,123 @@
-import { useEffect, useRef, useState } from "react";
-import "./Profile.css";
+import { useState } from "react";
+import "../Instructor/InstructorProfile.css";
 
 function Profile() {
-  const currentUser = JSON.parse(
-    localStorage.getItem("currentUser") || "{}"
-  );
 
-  const savedProfile = JSON.parse(
-    localStorage.getItem("profile") || "{}"
-  );
+  const [name, setName] = useState("Student Name");
+  const [email, setEmail] = useState("Student@example.com");
+  const [bio, setBio] = useState("Passionate Student.");
 
-  const savedName = currentUser.name || "";
-  const nameParts = savedName.split(" ");
+  const [photo, setPhoto] = useState(null);
 
-  const [firstName, setFirstName] = useState(
-    savedProfile.firstName || nameParts[0] || ""
-  );
-
-  const [lastName, setLastName] = useState(
-    savedProfile.lastName ||
-      nameParts.slice(1).join(" ") ||
-      ""
-  );
-
-  const [headline, setHeadline] = useState(
-    savedProfile.headline || ""
-  );
-
-  const [biography, setBiography] = useState(
-    savedProfile.biography || ""
-  );
-
-  const [language, setLanguage] = useState(
-    savedProfile.language || "English (US)"
-  );
-
-  const [saved, setSaved] = useState(false);
-
-  const [photo, setPhoto] = useState(
-    localStorage.getItem("profilePhoto") || ""
-  );
-
-  const [showPhotoOptions, setShowPhotoOptions] =
-    useState(false);
-
-  const [cameraOpen, setCameraOpen] =
-    useState(false);
-
-  const videoRef = useRef(null);
-  const streamRef = useRef(null);
-  const fileInputRef = useRef(null);
-
-
-  async function startCamera() {
-    try {
-      const stream =
-        await navigator.mediaDevices.getUserMedia({
-          video: true
-        });
-
-      streamRef.current = stream;
-
-      setCameraOpen(true);
-
-    } catch (error) {
-      alert(
-        "Could not access the camera. Please check your browser permissions."
-      );
-    }
-  }
-
-
-  useEffect(() => {
-    if (
-      cameraOpen &&
-      videoRef.current &&
-      streamRef.current
-    ) {
-      videoRef.current.srcObject =
-        streamRef.current;
-    }
-  }, [cameraOpen]);
-
-
-  function stopCamera() {
-    if (streamRef.current) {
-      streamRef.current
-        .getTracks()
-        .forEach((track) => track.stop());
-
-      streamRef.current = null;
-    }
-
-    setCameraOpen(false);
-  }
-
-
-  function takePhoto() {
-    const video = videoRef.current;
-
-    if (!video) return;
-
-    const canvas =
-      document.createElement("canvas");
-
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-
-    const context = canvas.getContext("2d");
-
-    context.drawImage(
-      video,
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-    const image =
-      canvas.toDataURL("image/jpeg");
-
-    setPhoto(image);
-
-    localStorage.setItem(
-      "profilePhoto",
-      image
-    );
-
-    stopCamera();
-  }
-
-
-  function choosePhoto(event) {
+  const handlePhotoChange = (event) => {
     const file = event.target.files[0];
 
-    if (!file) return;
+    if (!file) {
+      return;
+    }
 
-    const reader = new FileReader();
+    const imageUrl = URL.createObjectURL(file);
 
-    reader.onload = function () {
-      setPhoto(reader.result);
+    setPhoto(imageUrl);
+  };
 
-      localStorage.setItem(
-        "profilePhoto",
-        reader.result
-      );
-    };
-
-    reader.readAsDataURL(file);
-  }
-
-
-  function handleSave(event) {
+  const handleSave = (event) => {
     event.preventDefault();
 
-    const profile = {
-      firstName,
-      lastName,
-      headline,
-      biography,
-      language
-    };
-
-    localStorage.setItem(
-      "profile",
-      JSON.stringify(profile)
-    );
-
-    const updatedUser = {
-      ...currentUser,
-      name: `${firstName} ${lastName}`.trim()
-    };
-
-    localStorage.setItem(
-      "currentUser",
-      JSON.stringify(updatedUser)
-    );
-
-    setSaved(true);
-
-    setTimeout(() => {
-      setSaved(false);
-    }, 3000);
-  }
-
-
-  useEffect(() => {
-    return () => {
-      if (streamRef.current) {
-        streamRef.current
-          .getTracks()
-          .forEach((track) => track.stop());
-      }
-    };
-  }, []);
-
+    alert("Profile updated!");
+  };
 
   return (
-    <main className="profile-page">
+    <main className="instructor-profile-page">
 
-      <aside className="profile-sidebar">
+      <div className="instructor-profile-container">
 
-        <div className="profile-user">
+        <h1>Student Profile</h1>
 
-          <button
-            className="profile-avatar-button"
-            onClick={() =>
-              setShowPhotoOptions(true)
-            }
-          >
+        <p>
+          Manage your Information.
+        </p>
+
+        {/* PHOTO */}
+
+        <section className="instructor-photo-section">
+
+          <div className="instructor-photo">
 
             {photo ? (
               <img
                 src={photo}
-                alt="Profile"
-                className="profile-avatar-image"
+                alt="Student"
               />
             ) : (
-              <div className="profile-avatar">
-                {firstName
-                  ? firstName
-                      .charAt(0)
-                      .toUpperCase()
-                  : "U"}
-              </div>
+              <span>👤</span>
             )}
 
-          </button>
+          </div>
 
-          <h2>
-            {firstName || "Your Name"}
-          </h2>
+          <div>
 
-        </div>
+            <h2>Profile Photo</h2>
 
+            <label className="photo-button">
 
-        <nav className="profile-menu">
+              Choose Photo
 
-          <button
-            className="profile-menu-item active"
-          >
-            Profile
-          </button>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoChange}
+              />
 
-          <button
-            className="profile-menu-item"
-            onClick={() =>
-              setShowPhotoOptions(true)
-            }
-          >
-            Photo
-          </button>
+            </label>
 
-        </nav>
+          </div>
 
-      </aside>
+        </section>
 
-
-      <section className="profile-content">
-
-        <div className="profile-heading">
-
-          <h1>Public profile</h1>
-
-          <p>
-            Add information about yourself
-          </p>
-
-        </div>
-
+        {/* PROFILE FORM */}
 
         <form
-          className="profile-form"
+          className="instructor-profile-form"
           onSubmit={handleSave}
         >
 
-          <div className="form-section">
+          <label>Name</label>
 
-            <h3>Basics:</h3>
+          <input
+            type="text"
+            value={name}
+            onChange={(event) =>
+              setName(event.target.value)
+            }
+          />
 
-            <div className="input-group">
+          <label>Email</label>
 
-              <input
-                type="text"
-                placeholder="First name"
-                value={firstName}
-                onChange={(event) =>
-                  setFirstName(
-                    event.target.value
-                  )
-                }
-              />
+          <input
+            type="email"
+            value={email}
+            onChange={(event) =>
+              setEmail(event.target.value)
+            }
+          />
 
-            </div>
+          <label>Student Bio</label>
 
+          <textarea
+            value={bio}
+            onChange={(event) =>
+              setBio(event.target.value)
+            }
+          ></textarea>
 
-            <div className="input-group">
-
-              <input
-                type="text"
-                placeholder="Last name"
-                value={lastName}
-                onChange={(event) =>
-                  setLastName(
-                    event.target.value
-                  )
-                }
-              />
-
-            </div>
-
-
-            <div className="input-group headline-input">
-
-              <input
-                type="text"
-                placeholder="Headline"
-                maxLength="60"
-                value={headline}
-                onChange={(event) =>
-                  setHeadline(
-                    event.target.value
-                  )
-                }
-              />
-
-              <span>
-                {60 - headline.length}
-              </span>
-
-            </div>
-
-            <p className="helper-text">
-              Add a short headline about yourself.
-            </p>
-
-          </div>
-
-
-          <div className="form-section">
-
-            <h3>Biography</h3>
-
-            <div className="bio-box">
-
-              <div className="bio-toolbar">
-
-                <button
-                  type="button"
-                  className="bold-button"
-                >
-                  B
-                </button>
-
-                <button
-                  type="button"
-                  className="italic-button"
-                >
-                  I
-                </button>
-
-              </div>
-
-              <textarea
-                placeholder="Biography"
-                value={biography}
-                onChange={(event) =>
-                  setBiography(
-                    event.target.value
-                  )
-                }
-              />
-
-            </div>
-
-            <p className="helper-text">
-              Tell people a little about yourself.
-            </p>
-
-          </div>
-
-
-          <div className="form-section language-section">
-
-            <label>
-              Language
-            </label>
-
-            <select
-              value={language}
-              onChange={(event) =>
-                setLanguage(
-                  event.target.value
-                )
-              }
-            >
-              <option>English (US)</option>
-              <option>English (UK)</option>
-              <option>French</option>
-              <option>Spanish</option>
-              <option>Italian</option>
-            </select>
-
-          </div>
-
-
-          <div className="save-section">
-
-            {saved && (
-              <p className="saved-message">
-                Profile saved successfully!
-              </p>
-            )}
-
-            <button
-              type="submit"
-              className="save-profile-button"
-            >
-              Save
-            </button>
-
-          </div>
+          <button type="submit">
+            Save Changes
+          </button>
 
         </form>
 
-      </section>
-
-
-      {showPhotoOptions && (
-
-        <div
-          className="photo-modal-overlay"
-          onClick={() =>
-            setShowPhotoOptions(false)
-          }
-        >
-
-          <div
-            className="photo-modal"
-            onClick={(event) =>
-              event.stopPropagation()
-            }
-          >
-
-            <button
-              className="close-photo-modal"
-              onClick={() =>
-                setShowPhotoOptions(false)
-              }
-            >
-              ×
-            </button>
-
-            <h2>
-              Choose Profile Photo
-            </h2>
-
-            <p>
-              Choose how you want to add your photo.
-            </p>
-
-
-            <button
-              className="photo-option-button"
-              onClick={() => {
-                setShowPhotoOptions(false);
-                startCamera();
-              }}
-            >
-              <span>📷</span>
-              Take a photo
-            </button>
-
-
-            <button
-              className="photo-option-button"
-              onClick={() => {
-                fileInputRef.current.click();
-                setShowPhotoOptions(false);
-              }}
-            >
-              <span>🖼️</span>
-              Choose from device
-            </button>
-
-
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={choosePhoto}
-              style={{ display: "none" }}
-            />
-
-          </div>
-
-        </div>
-
-      )}
-
-
-      {cameraOpen && (
-
-        <div className="camera-overlay">
-
-          <div className="camera-box">
-
-            <h2>Take a photo</h2>
-
-            <video
-              ref={videoRef}
-              autoPlay
-              playsInline
-              className="camera-video"
-            />
-
-            <div className="camera-buttons">
-
-              <button
-                className="take-photo-button"
-                onClick={takePhoto}
-              >
-                📷 Take Photo
-              </button>
-
-              <button
-                className="cancel-camera-button"
-                onClick={stopCamera}
-              >
-                Cancel
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      )}
+      </div>
 
     </main>
   );
